@@ -1,0 +1,16 @@
+.text_second_piece {
+    margin-top: -2.9rem;
+    margin-left: 11.1rem;
+    z-index: 10;
+}
+.text_third_piece {
+    text-align: left;
+    margin-left: 1.7rem;
+    margin-top: -5.5rem;
+
+}
+.text_forth_piece {
+    margin-top: -2.8rem;
+    margin-left: 9rem;
+    z-index: 10;
+}

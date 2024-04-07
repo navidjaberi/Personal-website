@@ -14,3 +14,41 @@
     margin-left: 9rem;
     z-index: 10;
 }
+@media only screen and (max-width: 1024px) and (min-width: 769px){
+    .text_second_piece {
+        margin-top: -2.1rem;
+        margin-left: 9.1rem;
+        z-index: 10;
+    }
+    .text_third_piece {
+        text-align: left;
+        margin-left: 1.7rem;
+        margin-top: -4.5rem;
+    
+    }
+    .text_forth_piece {
+        margin-top: -2.1rem;
+        margin-left: 8rem;
+        z-index: 10;
+    }
+}
+@media only screen and (max-width: 769px){
+    .text_second_piece {
+        margin-top: -2.1rem;
+        margin-left: 3.8rem;
+        z-index: 10;
+    }
+    .text_third_piece {
+        text-align: left;
+        margin-left: -11rem;
+        margin-top: -4.5rem;
+        text-align: center;
+    
+    }
+    .text_forth_piece {
+        margin-top: -2.1rem;
+        margin-left: 9rem;
+        z-index: 10;
+      
+    }
+}

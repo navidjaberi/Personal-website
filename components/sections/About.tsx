@@ -1,17 +1,19 @@
-const { Fragment } = require("react");
+import { motion } from "framer-motion";
 const About = () => {
   return (
-
-      <div className=" mx-auto h-screen text-white">
+      <motion.div className=" mx-auto md:h-screen flex items-center dark:text-white text-lightPrimary mt-20"     initial={{opacity:0,y:200}}
+      transition={{duration:2}}
+      whileInView={{opacity:1,y:0}}
+      >
         <div>
         <div className="flex items-center justify-center">
-          <div className="w-1/5 h-0.5 bg-white"></div>
-          <h1 className="text-4xl px-4 py-2 "  style={{ fontFamily: "protest" }}> About Me</h1>
-          <div className="w-1/5 h-0.5 bg-white"></div>
+          <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
+          <h1 className="md:text-4xl  text-2xl px-4 py-2 "  style={{ fontFamily: "protest" }}> About Me</h1>
+          <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
           </div>
-          <div className="w-3/6 mx-auto text-lg leading-8 mt-5">
+          <div className="md:w-3/6 mx-auto md:px-0 px-3 md:text-lg text-sm leading-8 mt-10 text-black dark:text-white">
           <p>
-            Welcome to my corner of the web! I'm Navid, a passionate 26-year-old
+            Welcome to my corner of the web! I'm Navid.   a passionate 26-year-old
             software engineer hailing from the beautiful land of Iran. With
             nearly three years of experience under my belt, I specialize in
             crafting captivating digital experiences as a frontend developer.</p>
@@ -37,7 +39,7 @@ const About = () => {
           </p>
           </div>
         </div>
-      </div>
+      </motion.div>
 
   );
 };

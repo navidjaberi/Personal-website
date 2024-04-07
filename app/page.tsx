@@ -12,9 +12,15 @@ import Home from "../components/sections/Home";
 import About from "../components/sections/About";
 import Experiences from "../components/sections/Experiences";
 import Skills from "@/components/sections/Skills";
-
+import Contact from "@/components/sections/Contact";
+import { useTheme } from "next-themes";
 function App() {
   const [activeSection, setActiveSection] = useState("home");
+  const { theme, setTheme, systemTheme } = useTheme();
+  useEffect(() => {
+    const currentTheme = theme === "system" ? systemTheme : theme;
+    setTheme(currentTheme);
+  }, []);
   useEffect(() => {
     const handleScroll = () => {
       const sections = {
@@ -22,13 +28,13 @@ function App() {
         about: document.getElementById("about"),
         experiences: document.getElementById("experiences"),
         skills: document.getElementById("skills"),
+        contact: document.getElementById("contact"),
       };
-
       const currentSection = Object.keys(sections).find(
         (section) => sections[section].getBoundingClientRect().bottom >= 10 
       );
-
-      if (currentSection && window.location.hash !== `#${currentSection}`) {
+    
+      if (currentSection) {
         window.history.replaceState(null, "", `#${currentSection}`);
         setActiveSection(currentSection);
       }
@@ -38,7 +44,6 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [activeSection]);
-
   return (
     <Fragment>
       <Header activeLink={activeSection} />
@@ -49,6 +54,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/experiences" element={<Experiences />} />
           <Route path="/skills" element={<Skills />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <div>
           <Element id="home" name="home">
@@ -62,6 +68,9 @@ function App() {
           </Element>
           <Element id="skills" name="skills">
             <Skills />
+          </Element>
+          <Element id="contact" name="contact">
+            <Contact />
           </Element>
         </div>
       </Router>

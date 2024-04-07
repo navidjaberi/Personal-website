@@ -1,7 +1,7 @@
 
 const SkillsCard = ({fill,pathD,title,viewBox}) => {
   return (
-    <div className="w-1/2 text-white items-center justify-center hover:bg-[#181828] hover:shadow-xl rounded-xl p-4 mt-10 border border-blue-300/30 hover:scale-105 opacity-80 hover:opacity-100 ease-in-out duration-500">
+    <div className="w-full text-white   items-center justify-center dark:hover:bg-darkPrimary dark:bg-transparent bg-lightPrimary hover:shadow-xl rounded-xl md:p-4 p-2 md:mt-10 border dark:border-darkSecondary/30 border-lightSecondary bg-lightPrimary hover:scale-105 opacity-80 hover:opacity-100 ease-in-out duration-500 mx-auto">
       <svg
         viewBox={viewBox}
         fill={fill}
@@ -11,7 +11,7 @@ const SkillsCard = ({fill,pathD,title,viewBox}) => {
       >
         <path d={pathD} />
       </svg>
-      <p className="text-2xl mx-auto">{title}</p>
+      <p className="md:text-2xl text-sm  ">{title}</p>
     </div>
   );
 };

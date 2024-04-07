@@ -7,6 +7,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+
 import { Element } from "react-scroll";
 import Home from "../components/sections/Home";
 import About from "../components/sections/About";
@@ -57,7 +58,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <div>
-          <Element id="home" name="home">
+          <Element id="home" name="home" >
             <Home />
           </Element>
           <Element id="about" name="about">

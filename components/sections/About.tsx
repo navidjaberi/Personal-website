@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 const About = () => {
   return (
       <motion.div className=" mx-auto md:h-screen flex items-center dark:text-white text-lightPrimary mt-20"     initial={{opacity:0,y:200}}
-      transition={{duration:2}}
+      transition={{duration:1}}
       whileInView={{opacity:1,y:0}}
+      viewport={{ once: true }}
       >
         <div>
         <div className="flex items-center justify-center">

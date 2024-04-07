@@ -1,8 +1,14 @@
 import SkillsCard from "../base/SkillsCard";
 import { skills } from "../base/SkillsContent";
+import { motion } from "framer-motion";
 const Skills = () => {
   return (
-    <div className=" mx-auto dark:text-white text-lightPrimary mt-24">
+    <motion.div className=" mx-auto dark:text-white text-lightPrimary mt-24"
+    initial={{opacity:0,y:200}}
+    transition={{duration:1}}
+    whileInView={{opacity:1,y:0}}
+    viewport={{ once: true }}
+    >
       <div className="flex items-center justify-center">
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
         <h1 className="md:text-4xl text-2xl px-4 py-2 " style={{ fontFamily: "protest" }}>
@@ -21,7 +27,7 @@ const Skills = () => {
           />
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default Skills;

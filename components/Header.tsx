@@ -2,12 +2,38 @@
 import { useTheme } from "next-themes";
 const { useState } = require("react");
 import Link from "next/link";
-import { motion } from "framer-motion";
-
+import { motion,useScroll } from "framer-motion";
+import { useCallback, useEffect } from "react";
 const Header = ({ activeLink }) => {
   const { theme, setTheme } = useTheme();
   const [darkMode, setDarkMode] = useState(null);
   const [menuActive, setMenuActive] = useState(false);
+  const [headerStickTop, setHeaderStickTop] = useState(false);
+  const [y, setY] = useState(window.scrollY);
+
+const handleNavigation = useCallback(
+  e => {
+    const window = e.currentTarget;
+if(window.scrollY > 800 ){
+  setHeaderStickTop(true)
+}else{
+  setHeaderStickTop(false)
+}
+    setY(window.scrollY);
+  }, [y]
+);
+
+useEffect(() => {
+  setY(window.scrollY);
+  window.addEventListener("scroll", handleNavigation);
+
+  return () => {
+    window.removeEventListener("scroll", handleNavigation);
+  };
+}, [handleNavigation]);
+
+
+
   const darkModeToggle = () => {
     setDarkMode((prv) => !prv);
     theme == "dark" ? setTheme("light") : setTheme("dark");
@@ -45,7 +71,7 @@ const Header = ({ activeLink }) => {
   };
 
   return (
-    <div>
+    <div  >
       <div className="md:hidden flex items-center mt-10">
         <motion.button
           whileTap={{ scale: 1.1 }}
@@ -134,9 +160,11 @@ const Header = ({ activeLink }) => {
       </motion.div>
 
       <motion.nav
+
         className={
-          "hidden md:flex  items-center text-center justify-center rounded-3xl  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12 mt-10  fixed right-2/4 translate-x-1/2 z-50 uppercase"
+         `${headerStickTop ? 'translate-y-0' : 'translate-y-10'} hidden md:flex transition-transform duration-300 items-center text-center justify-center rounded-3xl  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`
         }
+ 
         animate={{
       
         width:[0,1000]
@@ -148,6 +176,7 @@ const Header = ({ activeLink }) => {
           times: [0, 0.2, 0.5, 0.8, 1],
        
         }}
+        
       >
         <div className="flex items-center ml-3">
           <button

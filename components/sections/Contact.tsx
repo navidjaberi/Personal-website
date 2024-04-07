@@ -3,11 +3,15 @@ import { contacts } from "../base/ContactContent";
 import Image from "next/image";
 import contactImg from "../../public/contact-img.jpg";
 import contactImgDark from "../../public/contact-img-dark.jpg";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 const Contact = () => {
   const { theme } = useTheme();
   return (
-    <div className=" mx-auto dark:text-white text-lightPrimary mt-20 h-screen">
+    <motion.div className=" mx-auto dark:text-white text-lightPrimary mt-20 h-screen"    initial={{opacity:0,y:200}}
+    transition={{duration:1}}
+    whileInView={{opacity:1,y:0}}
+    viewport={{ once: true }}>
       <div className="flex items-center justify-center">
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
         <h1
@@ -20,13 +24,15 @@ const Contact = () => {
       </div>
       <div className="md:w-3/6 md:px-0 px-4 mx-auto text-lg leading-8 mt-32">
         <div className="w-full   dark:text-white text-black  dark:bg-darkPrimary bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30 hover:scale-105  ease-in-out duration-500 ">
-          <div>
+          <motion.div 
+            animate={{ opacity: [null, 0, 100] }}
+          >
             <Image
               src={theme === "dark" ? contactImgDark : contactImg}
               className="w-32 rounded-full border border-darkPrimary/30 border-2 mx-auto -mt-5 shadow-xl contact-animation "
               alt="Avatar"
             />
-          </div>
+          </motion.div>
           <div className="mt-8 md:text-xl text-md">
             <p>Thanks for visiting!</p>
             <p className="mt-3">If you'd like to contact,feel free to reach me by social media or Email</p>
@@ -44,7 +50,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default Contact;

@@ -1,6 +1,14 @@
+import { motion } from "framer-motion";
 const ExperiencesCard = ({ date, title, description, skills }) => {
   return (
-    <div className="w-full dark:text-white text-black flex dark:hover:bg-darkPrimary hover:bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30 hover:scale-105 opacity-80 hover:opacity-100 ease-in-out duration-500 ">
+    <motion.div
+      className="w-full dark:text-white text-black flex dark:hover:bg-darkPrimary hover:bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30   "
+      initial={{opacity:0,y:100}}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: "spring", stiffness: 400, damping: 60 }}
+      whileInView={{ opacity: 1,y:0 }}
+    >
       <div className="w-1/4 ">
         <p className="uppercase md:text-sm text-xs  text-gray-100 opacity-50 mt-1">
           {date}
@@ -18,7 +26,7 @@ const ExperiencesCard = ({ date, title, description, skills }) => {
           </button>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default ExperiencesCard;

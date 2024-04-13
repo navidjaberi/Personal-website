@@ -1,13 +1,19 @@
 import { motion } from "framer-motion";
-const ExperiencesCard = ({ date, title, description, skills }) => {
+import ExperiencesCardProps  from "./ExperiencesCard";
+const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
+  date,
+  title,
+  description,
+  skills,
+}) => {
   return (
     <motion.div
       className="w-full dark:text-white text-black flex dark:hover:bg-darkPrimary hover:bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30   "
-      initial={{opacity:0,y:100}}
+      initial={{ opacity: 0, y: 100 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 400, damping: 60 }}
-      whileInView={{ opacity: 1,y:0 }}
+      whileInView={{ opacity: 1, y: 0 }}
     >
       <div className="w-1/4 ">
         <p className="uppercase md:text-sm text-xs  text-gray-100 opacity-50 mt-1">
@@ -19,7 +25,7 @@ const ExperiencesCard = ({ date, title, description, skills }) => {
         <p className="md:text-base text-sm mt-3 leading-7">{description}</p>
         {skills.map((i) => (
           <button
-            key={i.id}
+            key={i}
             className="border md:text-sm text-xs px-2 md:py-1  md:mt-5 rounded-3xl d-flex items-center dark:text-darkSecondary dark:border-darkSecondary  bg-darkPrimary text-lightSecondary border-lightPrimary cursor-default md:mr-2 mr-1"
           >
             {i}

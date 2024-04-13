@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
-import ExperiencesCard from "../base/ExperienceCard";
-import { experiences } from "../../components/base/ExperiencesContent";
+import ExperiencesCard from "../base/experience/ExperienceCard";
+import { experiences } from "../base/experience/ExperiencesContent";
 const Experiences = () => {
   return (
     <motion.div
-      className=" mx-auto dark:text-white text-lightPrimary mt-10"
+      className=" mx-auto dark:text-white text-lightPrimary pt-5"
       initial={{ opacity: 0, y: 200 }}
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mt-20">
         <div className="w-1/5 h-0.5  bg-lightPrimary dark:bg-white"></div>
         <h1
           className="md:text-4xl  text-2xl px-4 py-2 "

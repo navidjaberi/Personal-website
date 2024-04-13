@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-const SkillsCard = ({fill,pathD,title,viewBox}) => {
+import SkillsCardProps from "./SkillsCard.d"
+const SkillsCard: React.FC<SkillsCardProps>  = ({fill,pathD,title,viewBox}) => {
   return (
-    <motion.div className="w-full text-white   items-center justify-center dark:hover:bg-darkPrimary dark:bg-transparent bg-lightPrimary hover:shadow-xl rounded-xl md:p-4 p-2 md:mt-10 border dark:border-darkSecondary/30 border-lightSecondary  bg-lightPrimary mx-auto"
+    <motion.div className="w-full text-white   items-center justify-center dark:hover:bg-darkPrimary dark:bg-transparent hover:shadow-xl rounded-xl md:p-4 p-2 md:mt-10 border dark:border-darkSecondary/30 border-lightSecondary  bg-lightPrimary mx-auto"
     initial={{opacity:0.8}}
     whileHover={{ scale: 1.06,opacity:1 }}
     transition={{ type: "spring", stiffness: 400, damping: 10 }}

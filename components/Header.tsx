@@ -1,38 +1,34 @@
 "use client";
 import { useTheme } from "next-themes";
-const { useState } = require("react");
+import { useState } from "react";
 import Link from "next/link";
-import { motion,useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { useCallback, useEffect } from "react";
-const Header = ({ activeLink }) => {
+const Header: React.FC<{ activeLink: string }> = ({ activeLink }) => {
   const { theme, setTheme } = useTheme();
-  const [darkMode, setDarkMode] = useState(null);
-  const [menuActive, setMenuActive] = useState(false);
-  const [headerStickTop, setHeaderStickTop] = useState(false);
-  const [y, setY] = useState(window.scrollY);
-
-const handleNavigation = useCallback(
-  e => {
-    const window = e.currentTarget;
-if(window.scrollY > 800 ){
-  setHeaderStickTop(true)
-}else{
-  setHeaderStickTop(false)
-}
+  const [darkMode, setDarkMode] = useState<boolean | null>(null);
+  const [menuActive, setMenuActive] = useState<boolean>(false);
+  const [headerStickTop, setHeaderStickTop] = useState<boolean>(false);
+  const [y, setY] = useState<number>(typeof window !== 'undefined' ? window.scrollY : 0);
+  const handleNavigation = useCallback(
+    (e:any) => {
+      const window = e.currentTarget;
+      if (window.scrollY > 800) {
+        setHeaderStickTop(true);
+      } else {
+        setHeaderStickTop(false);
+      }
+      setY(window.scrollY);
+    },
+    [y]
+  );
+  useEffect(() => {
     setY(window.scrollY);
-  }, [y]
-);
-
-useEffect(() => {
-  setY(window.scrollY);
-  window.addEventListener("scroll", handleNavigation);
-
-  return () => {
-    window.removeEventListener("scroll", handleNavigation);
-  };
-}, [handleNavigation]);
-
-
+    window.addEventListener("scroll", handleNavigation);
+    return () => {
+      window.removeEventListener("scroll", handleNavigation);
+    };
+  }, [handleNavigation]);
 
   const darkModeToggle = () => {
     setDarkMode((prv) => !prv);
@@ -41,7 +37,7 @@ useEffect(() => {
   const toggleMenu = () => {
     setMenuActive((prv) => !prv);
   };
-  const  variants={
+  const variants = {
     open: {
       clipPath: "inset(0% 0% 0% 0% round 10px)",
       transition: {
@@ -49,29 +45,29 @@ useEffect(() => {
         bounce: 0,
         duration: 0.3,
         delayChildren: 0.3,
-        staggerChildren: 0.05
-      }
+        staggerChildren: 0.05,
+      },
     },
     closed: {
       clipPath: "inset(10% 50% 90% 50% round 10px)",
       transition: {
         type: "spring",
         bounce: 0,
-        duration: 0.3
-      }
-    }
-  }
+        duration: 0.3,
+      },
+    },
+  };
   const item = {
     open: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 300, damping: 24 }
+      transition: { type: "spring", stiffness: 300, damping: 24 },
     },
-    closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
+    closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
   };
 
   return (
-    <div  >
+    <div>
       <div className="md:hidden flex items-center mt-10">
         <motion.button
           whileTap={{ scale: 1.1 }}
@@ -107,15 +103,11 @@ useEffect(() => {
       </div>
       <motion.div
         animate={menuActive ? "open" : "closed"}
-  
         className={`${
           menuActive ? "block" : "hidden"
         } md:hidden  transition duration-300 bg-lightSecondary dark:bg-darkPrimary mt-1 rounded mx-1 border-[0.4px]`}
       >
-        <motion.ul
-          className="divide-y-[0.4px]"
-         variants={variants}
-        >
+        <motion.ul className="divide-y-[0.4px]" variants={variants}>
           <motion.li variants={item}>
             <a
               className="block p-4 text-sm font-semibold text-gray-400 focus:bg-white hover:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary rounded"
@@ -158,25 +150,18 @@ useEffect(() => {
           </motion.li>
         </motion.ul>
       </motion.div>
-
       <motion.nav
-
-        className={
-         `${headerStickTop ? 'translate-y-0' : 'translate-y-10'} hidden md:flex transition-transform duration-300 items-center text-center justify-center rounded-3xl  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`
-        }
- 
+        className={`${
+          headerStickTop ? "translate-y-0" : "translate-y-10"
+        } hidden md:flex transition-transform duration-300 items-center text-center justify-center rounded-3xl  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`}
         animate={{
-      
-        width:[0,1000]
+          width: [0, 1000],
         }}
-   
         transition={{
           duration: 4,
           ease: "easeInOut",
           times: [0, 0.2, 0.5, 0.8, 1],
-       
         }}
-        
       >
         <div className="flex items-center ml-3">
           <button

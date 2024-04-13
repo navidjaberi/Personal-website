@@ -7,7 +7,6 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-
 import { Element } from "react-scroll";
 import Home from "../components/sections/Home";
 import About from "../components/sections/About";
@@ -16,15 +15,15 @@ import Skills from "@/components/sections/Skills";
 import Contact from "@/components/sections/Contact";
 import { useTheme } from "next-themes";
 function App() {
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState<string>("home");
   const { theme, setTheme, systemTheme } = useTheme();
   useEffect(() => {
-    const currentTheme = theme === "system" ? systemTheme : theme;
-    setTheme(currentTheme);
+    const currentTheme = theme === "system" ? systemTheme : theme  as string ;
+    setTheme(currentTheme!);
   }, []);
   useEffect(() => {
     const handleScroll = () => {
-      const sections = {
+      const sections: Record<string, HTMLElement | null>  = {
         home: document.getElementById("home"),
         about: document.getElementById("about"),
         experiences: document.getElementById("experiences"),
@@ -32,7 +31,7 @@ function App() {
         contact: document.getElementById("contact"),
       };
       const currentSection = Object.keys(sections).find(
-        (section) => sections[section].getBoundingClientRect().bottom >= 10 
+        (section) => sections[section]!.getBoundingClientRect().bottom >= 10 
       );
     
       if (currentSection) {
@@ -78,5 +77,4 @@ function App() {
     </Fragment>
   );
 }
-
 export default App;

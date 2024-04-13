@@ -10,9 +10,7 @@ const ParticlesBg=()=>{
     const [init, setInit] = useState(false);
     const { theme} = useTheme();
     // this should be run only once per application lifetime
-
     useEffect(() => {
-
       initParticlesEngine(async (engine) => {
         // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
         // this loads the tsparticles package bundle, it's the easiest method for getting everything ready

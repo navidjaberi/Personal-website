@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import ExperiencesCardProps  from "./ExperiencesCard";
+import ExperiencesCardProps  from "../../types/ExperiencesCard";
 const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
   date,
   title,

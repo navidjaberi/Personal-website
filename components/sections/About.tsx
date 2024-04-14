@@ -14,13 +14,13 @@ const About = () => {
           </div>
           <div className="md:w-3/6 mx-auto md:px-0 px-3 md:text-lg text-sm leading-8 mt-10 text-black dark:text-white">
           <p>
-            Welcome to my corner of the web! I'm Navid.   a passionate 26-year-old
+            Welcome to my corner of the web! I&apos;m Navid.   a passionate 26-year-old
             software engineer hailing from the beautiful land of Iran. With
             nearly three years of experience under my belt, I specialize in
             crafting captivating digital experiences as a frontend developer.</p>
             
              <p>My journey in the realm of technology has been nothing short of
-            exhilarating. I thrive on bringing visions to life, whether it's
+            exhilarating. I thrive on bringing visions to life, whether it&apos;s
             designing sleek websites or developing robust web applications.
             Armed with my expertise in JavaScript and proficiency in frameworks
             like Vue.js, Nuxt.js, React.js, and Next.js, I pride myself on
@@ -32,7 +32,7 @@ const About = () => {
             also ensure they are aesthetically pleasing and user-friendly.
             Additionally, my stint as a WordPress designer has equipped me with
             the ability to tailor content management systems to suit diverse
-            needs. When I'm not immersed in lines of code or refining design
+            needs. When I&apos;m not immersed in lines of code or refining design
             elements, you can find me exploring the latest tech trends, honing
             my skills, or simply soaking in the beauty of nature. My mission is
             to continue pushing boundaries, creating innovative solutions, and

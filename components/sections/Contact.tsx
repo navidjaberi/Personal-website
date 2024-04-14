@@ -38,7 +38,7 @@ const Contact = () => {
           <div className="mt-8 md:text-xl text-md">
             <p>Thanks for visiting!</p>
             <p className="mt-3">
-              If you'd like to contact,feel free to reach me by social media or
+              If you&apos;d like to contact,feel free to reach me by social media or
               Email
             </p>
 

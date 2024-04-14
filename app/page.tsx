@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     const currentTheme = theme === "system" ? systemTheme : theme  as string ;
     setTheme(currentTheme!);
-  }, []);
+  });
   useEffect(() => {
     const handleScroll = () => {
       const sections: Record<string, HTMLElement | null>  = {

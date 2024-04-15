@@ -23,13 +23,14 @@ function App() {
   });
   useEffect(() => {
     const handleScroll = () => {
+      if (typeof window !== 'undefined') {
       const sections: Record<string, HTMLElement | null>  = {
         home: document.getElementById("home"),
         about: document.getElementById("about"),
         experiences: document.getElementById("experiences"),
         skills: document.getElementById("skills"),
         contact: document.getElementById("contact"),
-      };
+      }
       const currentSection = Object.keys(sections).find(
         (section) => sections[section]!.getBoundingClientRect().bottom >= 10 
       );
@@ -38,7 +39,7 @@ function App() {
         window.history.replaceState(null, "", `#${currentSection}`);
         setActiveSection(currentSection);
       }
-    };
+    }; }
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);

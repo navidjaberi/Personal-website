@@ -20,9 +20,10 @@ const Header: React.FC<{ activeLink: string }> = ({ activeLink }) => {
       }
       setY(window.scrollY);
     },
-    [y]
+    []
   );
   useEffect(() => {
+    
     setY(window.scrollY);
     window.addEventListener("scroll", handleNavigation);
     return () => {

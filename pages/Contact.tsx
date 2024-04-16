@@ -1,8 +1,9 @@
-import ContactCard from "../base/contact/ContactCard";
-import { contacts } from "../base/contact/ContactContent";
+"use client";
+import ContactCard from "@/components/base/contact/ContactCard";
+import { contacts } from "@/components/base/contact/ContactContent";
 import Image from "next/image";
-import contactImg from "../../public/contact-img.jpg";
-import contactImgDark from "../../public/contact-img-dark.jpg";
+import contactImg from "@/public/contact-img.jpg";
+import contactImgDark from "@/public/contact-img-dark.jpg";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Link from "next/link";

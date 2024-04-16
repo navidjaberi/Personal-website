@@ -1,6 +1,6 @@
-import classes from "../../styles/home.module.css";
-import landingImgDark from "../../public/landingblack.jpg";
-import landingImgLight from "../../public/landing.jpg";
+"use client";
+import classes from "@/styles/home.module.css";
+import landingImgLight from "@/public/landing.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
@@ -78,8 +78,10 @@ const Home = () => {
           >
             <Image
               priority={true}
-              src={theme === "dark" ? landingImgDark : landingImgLight}
+              src={landingImgLight}
               alt="landing"
+              style={theme==='dark' ?  {filter:'grayscale(100%)',WebkitFilter:'grayscale(100%)'} : {}}
+    
             ></Image>
           </motion.div>
         </div>

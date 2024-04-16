@@ -43,7 +43,7 @@ const Home = () => {
           <motion.div className=" md:ml-7 lg:mt-11 md:mt-4 ">
             <motion.p
               className="lg:text-lg md:text-md text-sm px-2  text-black dark:text-white"
-              style={{ fontFamily: "Poppins" }}
+              
               animate={{ x: 0 }}
               initial={{ x: -500 }}
               transition={{ delay: 3, duration: 1 }}

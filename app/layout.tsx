@@ -22,8 +22,9 @@ export default function RootLayout({
     });
   }, []);
   return (
-    <html lang="en" className="dark">
-      <body className="App">
+    <html lang="en"suppressHydrationWarning={true} >
+      <body className="App" >
+        
         <button
           className={`${
             showScrollBtn ? "opacity-100" : "opacity-0"

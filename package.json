@@ -17,7 +17,8 @@
     "react": "^18.2.0",
     "react-animated-cursor": "^2.11.2",
     "react-dom": "^18.2.0",
-    "react-scroll": "^1.9.0"
+    "react-scroll": "^1.9.0",
+    "sharp": "^0.33.3"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -25,11 +26,14 @@
     "@types/react-dom": "^18",
     "@types/react-scroll": "^1.8.10",
     "autoprefixer": "^10.0.1",
+    "envify": "^4.1.0",
     "eslint": "^8",
     "eslint-config-next": "14.1.1",
     "next-themes": "^0.2.1",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "terser": "^5.30.3",
+    "typescript": "^5",
+    "uglifyify": "^5.0.2"
   }
 }

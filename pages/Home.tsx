@@ -40,6 +40,7 @@ const Home = () => {
               BERI
             </motion.span>
           </div>
+          
           <motion.div className=" md:ml-7 lg:mt-11 md:mt-4 ">
             <motion.p
               className="lg:text-lg md:text-md text-sm px-2  text-black dark:text-white"
@@ -50,11 +51,11 @@ const Home = () => {
             >
               Hello my name is Navid,
               <br />A 26 years old frontend Developer.
-              <br />I like to craft solid and scalable frontend products with
+              <br />I like to craft solid and scalable frontend products <br />with
               great user experiences.
             </motion.p>
             <motion.button
-              drag
+         
               animate={{ x: 0,transition:{
                 delay: 3,duration: 1 
               }}}
@@ -68,13 +69,13 @@ const Home = () => {
             </motion.button>
           </motion.div>
         </div>
-        <div className="md:w-9/12 w-full -mt-32 md:mt-0 md:flex-1 ">
+        <div className="md:w-9/12 w-full -mt-36 md:mt-0 md:flex-1 ">
           <motion.div
             className="md:px-12 px-3"
             initial={{ opacity: 0.1 }}
             transition={{ duration: 1 }}
             whileInView={{ opacity: 1 }}
-            drag
+         
           >
             <Image
               priority={true}

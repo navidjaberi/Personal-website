@@ -16,17 +16,17 @@ const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
     >
       <div className="w-1/4 ">
-        <p className="uppercase md:text-sm text-xs  text-gray-100 opacity-50 mt-1">
+        <p className="uppercase md:text-xs text-xs  text-gray-100 opacity-50 mt-1">
           {date}
         </p>
       </div>
       <div className="w-3/4 text-left">
-        <h1 className="md:text-xl text-sm ">{title}</h1>
-        <p className="md:text-base text-sm mt-3 leading-7">{description}</p>
+        <h1 className="md:text-xl text-xs ">{title}</h1>
+        <p className="md:text-base text-xs mt-3 leading-7">{description}</p>
         {skills.map((i) => (
           <button
             key={i}
-            className="border md:text-sm text-xs px-2 md:py-1  md:mt-5 rounded-3xl d-flex items-center dark:text-darkSecondary dark:border-darkSecondary  bg-darkPrimary text-lightSecondary border-lightPrimary cursor-default md:mr-2 mr-1"
+            className="border md:text-xs text-xs px-2 md:py-1  md:mt-5 rounded-3xl d-flex items-center dark:text-darkSecondary dark:border-darkSecondary  bg-darkPrimary text-lightSecondary border-lightPrimary cursor-default md:mr-2 mr-1"
           >
             {i}
           </button>

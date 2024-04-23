@@ -27,7 +27,7 @@ const Contact = () => {
         </h1>
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
       </div>
-      <div className="md:w-3/6 md:px-0 px-4 mx-auto text-lg leading-8 mt-32">
+      <div className="md:w-3/6 md:px-0 px-4 mx-auto text-lg leading-6 md:text-xs mt-32">
         <div className="w-full   dark:text-white text-black  dark:bg-darkPrimary bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30 hover:scale-105  ease-in-out duration-500 ">
           <motion.div animate={{ opacity: [null, 0, 100] }}>
             <Image
@@ -36,7 +36,7 @@ const Contact = () => {
               alt="Avatar"
             />
           </motion.div>
-          <div className="mt-8 md:text-xl text-md">
+          <div className="mt-8 md:text-xl text-xs">
             <p>Thanks for visiting!</p>
             <p className="mt-3">
               If you&apos;d like to contact,feel free to reach me by social media or
@@ -49,7 +49,7 @@ const Contact = () => {
               </button>
             </Link>
           </div>
-          <div className=" grid grid-cols-5 gap-1 mx-auto ">
+          <div className=" grid grid-cols-5 gap-1 mx-auto mt-3">
             {contacts.map((i) => (
               <ContactCard
                 key={i.id}

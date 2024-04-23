@@ -21,7 +21,7 @@ const Experiences = () => {
         </h1>
         <div className="w-1/5 h-0.5  bg-lightPrimary dark:bg-white"></div>
       </div>
-      <div className="md:w-3/6 md:px-0 px-4 mx-auto text-lg leading-8 mt-5">
+      <div className="md:w-3/6 md:px-0 px-4 mx-auto text-lg leading-6 md:text-xsmt-5">
         {experiences.map((i) => (
           <ExperiencesCard
             key={i.id}

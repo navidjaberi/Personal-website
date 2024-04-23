@@ -17,7 +17,7 @@ const SkillsCard: React.FC<SkillsCardProps>  = ({fill,pathD,title,viewBox}) => {
       >
         <path d={pathD} />
       </svg>
-      <p className="md:text-2xl text-sm  ">{title}</p>
+      <p className="md:text-2xl text-xs  ">{title}</p>
     </motion.div>
   );
 };

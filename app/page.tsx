@@ -1,8 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Header from "@/components/Header";
-import { Element } from "react-scroll";
-import { useTheme } from "next-themes";
+import {
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+} from "react-scroll";
+import AnimatedCursor from "react-animated-cursor";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Experiences from "@/pages/Experiences";
@@ -10,60 +15,75 @@ import Skills from "@/pages/Skills";
 import Contact from "@/pages/Contact";
 import { ThemeProvider } from "next-themes";
 import Particles from "@/components/particlesbg";
-
+import { Suspense } from 'react'
 function App() {
-  const [activeSection, setActiveSection] = useState<string>("home");
-  const { theme, setTheme, systemTheme } = useTheme();
-  useEffect(() => {
-    const currentTheme = theme === "system" ? systemTheme : (theme as string);
-    setTheme(currentTheme!);
-  });
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections: Record<string, HTMLElement | null> = {
-        home: document.getElementById("home"),
-        about: document.getElementById("about"),
-        experiences: document.getElementById("experiences"),
-        skills: document.getElementById("skills"),
-        contact: document.getElementById("contact"),
-      };
-      const currentSection = Object.keys(sections).find(
-        (section) => sections[section]!.getBoundingClientRect().bottom >= 10
-      );
 
-      if (currentSection) {
-        window.history.replaceState(null, "", `#${currentSection}`);
-        setActiveSection(currentSection);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
+  useEffect(() => {
+    // Registering the 'begin' event and logging it to the console when triggered.
+    Events.scrollEvent.register("begin", (to, element) => {
+
+    });
+    // Registering the 'end' event and logging it to the console when triggered.
+    Events.scrollEvent.register("end", (to, element) => {
+    });
+    // Updating scrollSpy when the component mounts.
+    scrollSpy.update();
+    // Returning a cleanup function to remove the registered events when the component unmounts.
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      Events.scrollEvent.remove("begin");
+      Events.scrollEvent.remove("end");
     };
-  }, [activeSection]);
+  }, []);
   return (
+    <Suspense fallback={<p>Loading feed...</p>}>
+      <AnimatedCursor
+          innerSize={8}
+          outerSize={35}
+          innerScale={1}
+          outerScale={2}
+          outerAlpha={0}
+          innerStyle={{
+            backgroundColor: "var(--cursor-color)",
+          }}
+          outerStyle={{
+            border: "1px solid var(--cursor-color)",
+          }}
+          clickables={[
+            "a",
+            'input[type="text"]',
+            'input[type="email"]',
+            'input[type="number"]',
+            'input[type="submit"]',
+            'input[type="image"]',
+            "label[for]",
+            "select",
+            "textarea",
+            "button",
+            ".link",
+          ]}
+        />
     <ThemeProvider attribute="class">
-      
-      <Header activeLink={activeSection} />
+      <Header />
       <Particles />
       <div>
-      <Element id="home" name="home">
-        <Home />
-      </Element>
-      <Element id="about" name="about">
-        <About />
-      </Element>
-      <Element id="experiences" name="experiences">
-        <Experiences />
-      </Element>
-      <Element id="skills" name="skills">
-        <Skills />
-      </Element>
-      <Element id="contact" name="contact">
-        <Contact />
-      </Element>
+        <Element id="home" name="home" className="element">
+          <Home />
+        </Element>
+        <Element id="about" name="about" className="element">
+          <About />
+        </Element>
+        <Element id="experiences" name="experiences" className="element">
+          <Experiences />
+        </Element>
+        <Element id="skills" name="skills" className="element">
+          <Skills />
+        </Element>
+        <Element id="contact" name="contact" className="element">
+          <Contact />
+        </Element>
       </div>
     </ThemeProvider>
+    </Suspense>
   );
 }
 export default App;

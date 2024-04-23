@@ -1,36 +1,39 @@
 "use client";
 import { useTheme } from "next-themes";
 import { useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { Link } from "react-scroll";
+import { useAnimate, stagger, motion } from "framer-motion";
 import { useCallback, useEffect } from "react";
-const Header: React.FC<{ activeLink: string }> = ({ activeLink }) => {
+import { MoonIcon, SunIcon, Bars3Icon } from "@heroicons/react/24/outline";
+
+const Header: React.FC = () => {
+  const [activeSection, setActiveSection] = useState<string>("home");
+  const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
   const { theme, setTheme } = useTheme();
+  const [scope, animate] = useAnimate();
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [menuActive, setMenuActive] = useState<boolean>(false);
   const [headerStickTop, setHeaderStickTop] = useState<boolean>(false);
-  const [y, setY] = useState<number>(typeof window !== 'undefined' ? window.scrollY : 0);
-  const handleNavigation = useCallback(
-    (e:any) => {
-      const window = e.currentTarget;
-      if (window.scrollY > 800) {
-        setHeaderStickTop(true);
-      } else {
-        setHeaderStickTop(false);
-      }
-      setY(window.scrollY);
-    },
-    []
+  const [y, setY] = useState<number>(
+    typeof window !== "undefined" ? window.scrollY : 0
   );
+  const handleNavigation = useCallback((e: any) => {
+    const window = e.currentTarget;
+    if (window.scrollY > 800) {
+      setHeaderStickTop(true);
+    } else {
+      setHeaderStickTop(false);
+    }
+    setY(window.scrollY);
+  }, []);
   useEffect(() => {
-    
+    setTheme("light");
     setY(window.scrollY);
     window.addEventListener("scroll", handleNavigation);
     return () => {
       window.removeEventListener("scroll", handleNavigation);
     };
   }, [handleNavigation]);
-
   const darkModeToggle = () => {
     setDarkMode((prv) => !prv);
     theme == "dark" ? setTheme("light") : setTheme("dark");
@@ -38,130 +41,108 @@ const Header: React.FC<{ activeLink: string }> = ({ activeLink }) => {
   const toggleMenu = () => {
     setMenuActive((prv) => !prv);
   };
-  const variants = {
-    open: {
-      clipPath: "inset(0% 0% 0% 0% round 10px)",
-      transition: {
-        type: "spring",
-        bounce: 0,
-        duration: 0.3,
-        delayChildren: 0.3,
-        staggerChildren: 0.05,
-      },
-    },
-    closed: {
-      clipPath: "inset(10% 50% 90% 50% round 10px)",
-      transition: {
-        type: "spring",
-        bounce: 0,
-        duration: 0.3,
-      },
-    },
+  const handleSetActive = (to:string) => {
+    setActiveSection(to);
+    window.history.replaceState(null, "", `#${to}`);
   };
-  const item = {
-    open: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 300, damping: 24 },
-    },
-    closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
-  };
+  useEffect(() => {
+    animate(
+      "li",
+      menuActive
+        ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+        : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
+      {
+        duration: 0.2,
+        delay: menuActive ? staggerMenuItems : 0,
+      }
+    );
+  }, [menuActive]);
 
   return (
     <div>
-      <div className="md:hidden flex items-center mt-10">
-        <motion.button
-          whileTap={{ scale: 1.1 }}
+      <nav className="menu" ref={scope}>
+        <div className="md:hidden flex items-center mt-10">
+          <motion.button
+            whileTap={{ scale: 1.1 }}
+            className={`${
+              menuActive ? "bg-lightSecondary" : "bg-[#DDD0C8] "
+            } dark:bg-transparent  p-1  rounded-lg mx-1`}
+            onClick={toggleMenu}
+          >
+            <Bars3Icon className="h-6 w-6 " />
+          </motion.button>
+          <button
+            onClick={darkModeToggle}
+            className=" transition-all duration-100 bg-[#DDD0C8] dark:bg-transparent"
+          >
+            {theme !== "dark" && <MoonIcon className="h-6 w-6 text-primary" />}
+            {theme === "dark" && <SunIcon className="h-6 w-6 " />}
+          </button>
+        </div>
+        <motion.ul
           className={`${
-            menuActive ? "bg-lightSecondary" : "bg-[#DDD0C8] "
-          } dark:bg-transparent  p-1  rounded-lg mx-1`}
-          onClick={toggleMenu}
+            menuActive ? "block" : "hidden"
+          } divide-y-[0.4px] md:hidden  transition duration-300 bg-lightSecondary dark:bg-darkPrimary mt-1 mx-1 border-[0.4px]`}
         >
-          <svg
-            className="block h-5 w-5"
-            fill={darkMode ? "white" : "lightPrimary"}
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-          </svg>
-        </motion.button>
-        <button
-          onClick={darkModeToggle}
-          className=" transition-all duration-100 bg-[#DDD0C8] dark:bg-transparent"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill={darkMode ? "none" : "lightSecondary"}
-            viewBox="0 0 16 16"
-            stroke={darkMode ? "white" : "none"}
-            strokeWidth="0.3"
-            className="w-5 h-5"
-          >
-            <path d="M8 11a3 3 0 110-6 3 3 0 010 6zm0 1a4 4 0 100-8 4 4 0 000 8zM8 0a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 018 0zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 018 13zm8-5a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zM3 8a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2A.5.5 0 013 8zm10.657-5.657a.5.5 0 010 .707l-1.414 1.415a.5.5 0 11-.707-.708l1.414-1.414a.5.5 0 01.707 0zm-9.193 9.193a.5.5 0 010 .707L3.05 13.657a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm9.193 2.121a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM4.464 4.465a.5.5 0 01-.707 0L2.343 3.05a.5.5 0 11.707-.707l1.414 1.414a.5.5 0 010 .708z" />{" "}
-          </svg>
-        </button>
-      </div>
-      <motion.div
-        animate={menuActive ? "open" : "closed"}
-        className={`${
-          menuActive ? "block" : "hidden"
-        } md:hidden  transition duration-300 bg-lightSecondary dark:bg-darkPrimary mt-1 rounded mx-1 border-[0.4px]`}
-      >
-        <motion.ul className="divide-y-[0.4px]" variants={variants}>
-          <motion.li variants={item}>
-            <a
-              className="block p-4 text-sm font-semibold text-gray-400 focus:bg-white hover:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary rounded"
-              href="#home"
+          <motion.li>
+            <Link
+              className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white hover:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary rounded"
+              to="home"
             >
               Home
-            </a>
+            </Link>
           </motion.li>
-          <motion.li variants={item}>
-            <a
-              className="block p-4 text-sm font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
-              href="#about"
+          <motion.li>
+            <Link
+              className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
+              to="about"
             >
               About
-            </a>
+            </Link>
           </motion.li>
-          <motion.li variants={item}>
-            <a
-              className="block p-4 text-sm font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
-              href="#experiences"
+          <motion.li>
+            <Link
+              className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
+              to="experiences"
             >
               Experiences
-            </a>
+            </Link>
           </motion.li>
-          <motion.li variants={item}>
-            <a
-              className="block p-4 text-sm font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
-              href="#skills"
+          <motion.li>
+            <Link
+              className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
+              to="skills"
             >
               Skills
-            </a>
+            </Link>
           </motion.li>
-          <motion.li variants={item}>
-            <a
-              className="block p-4 text-sm font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
-              href="#contact"
+          <motion.li>
+            <Link
+              className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
+              to="contact"
             >
               Contact
-            </a>
+            </Link>
           </motion.li>
         </motion.ul>
-      </motion.div>
+      </nav>
       <motion.nav
         className={`${
-          headerStickTop ? "translate-y-0" : "translate-y-10"
-        } hidden md:flex transition-transform duration-300 items-center text-center justify-center rounded-3xl  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`}
+          headerStickTop ? "translate-y-0" : "translate-y-10 "
+        }, hidden md:flex transition-transform duration-300 rounded-3xl items-center text-center justify-center  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`}
         animate={{
           width: [0, 1000],
+          borderRadius: headerStickTop ? "0 0 20px 20px" : "40px",
         }}
         transition={{
-          duration: 4,
-          ease: "easeInOut",
-          times: [0, 0.2, 0.5, 0.8, 1],
+          width: {
+            duration: 4,
+            ease: "easeInOut",
+            times: [0, 0.2, 0.5, 0.8, 1],
+          },
+          borderRadius: {
+            duration: 0.1,
+          },
         }}
       >
         <div className="flex items-center ml-3">
@@ -169,24 +150,22 @@ const Header: React.FC<{ activeLink: string }> = ({ activeLink }) => {
             onClick={darkModeToggle}
             className=" transition-all duration-100 "
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill={darkMode ? "none" : "white"}
-              viewBox="0 0 16 16"
-              stroke="white"
-              strokeWidth="0.3"
-              className="w-6 h-6"
-            >
-              <path d="M8 11a3 3 0 110-6 3 3 0 010 6zm0 1a4 4 0 100-8 4 4 0 000 8zM8 0a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 018 0zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 018 13zm8-5a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zM3 8a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2A.5.5 0 013 8zm10.657-5.657a.5.5 0 010 .707l-1.414 1.415a.5.5 0 11-.707-.708l1.414-1.414a.5.5 0 01.707 0zm-9.193 9.193a.5.5 0 010 .707L3.05 13.657a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm9.193 2.121a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM4.464 4.465a.5.5 0 01-.707 0L2.343 3.05a.5.5 0 11.707-.707l1.414 1.414a.5.5 0 010 .708z" />{" "}
-            </svg>
+            {theme !== "dark" && <MoonIcon className="h-6 w-6 text-white" />}
+            {theme === "dark" && <SunIcon className="h-6 w-6 " />}
           </button>
         </div>
         <div className="w-full  flex justify-center  items-center ">
-          <div className="text-sm  flex justify-center  items-center gap-11">
+          <div className="text-xs  flex justify-center  items-center gap-11">
             <Link
-              href="#home"
+              smooth={true}
+              duration={500}
+              activeClass="active"
+              spy={true}
+              offset={50}
+              onSetActive={handleSetActive}
+              to="home"
               className={`${
-                activeLink === "home"
+                activeSection === "home"
                   ? "text-white scale-110 "
                   : "text-lightSecondary dark:text-darkSecondary scale-1 "
               } block  lg:inline-block lg:mt-0  relative group`}
@@ -195,9 +174,15 @@ const Header: React.FC<{ activeLink: string }> = ({ activeLink }) => {
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full "></span>
             </Link>
             <Link
-              href="#about"
+              smooth={true}
+              duration={500}
+              activeClass="active"
+              spy={true}
+              offset={50}
+              onSetActive={handleSetActive}
+              to="about"
               className={`${
-                activeLink === "about"
+                activeSection === "about"
                   ? "text-white scale-110 "
                   : "text-lightSecondary dark:text-darkSecondary scale-1 "
               } block  lg:inline-block lg:mt-0  relative group`}
@@ -206,9 +191,15 @@ const Header: React.FC<{ activeLink: string }> = ({ activeLink }) => {
               About
             </Link>
             <Link
-              href="#experiences"
+              smooth={true}
+              duration={500}
+              activeClass="active"
+              spy={true}
+              offset={50}
+              onSetActive={handleSetActive}
+              to="experiences"
               className={`${
-                activeLink === "experiences"
+                activeSection === "experiences"
                   ? "text-white scale-110 "
                   : "text-lightSecondary dark:text-darkSecondary scale-1 "
               } block  lg:inline-block lg:mt-0  relative group`}
@@ -217,9 +208,15 @@ const Header: React.FC<{ activeLink: string }> = ({ activeLink }) => {
               Experiences
             </Link>
             <Link
-              href="#skills"
+              smooth={true}
+              duration={500}
+              activeClass="active"
+              spy={true}
+              offset={50}
+              onSetActive={handleSetActive}
+              to="skills"
               className={`${
-                activeLink === "skills"
+                activeSection === "skills"
                   ? "text-white scale-110 "
                   : "text-lightSecondary dark:text-darkSecondary scale-1 "
               } block  lg:inline-block lg:mt-0  relative group`}
@@ -228,9 +225,14 @@ const Header: React.FC<{ activeLink: string }> = ({ activeLink }) => {
               Skills
             </Link>
             <Link
-              href="#contact"
+              smooth={true}
+              duration={500}
+              activeClass="active"
+              spy={true}
+              onSetActive={handleSetActive}
+              to="contact"
               className={`${
-                activeLink === "contact"
+                activeSection === "contact"
                   ? "text-white scale-110 "
                   : "text-lightSecondary dark:text-darkSecondary scale-1 "
               } block  lg:inline-block lg:mt-0  relative group`}
@@ -241,7 +243,6 @@ const Header: React.FC<{ activeLink: string }> = ({ activeLink }) => {
           </div>
         </div>
       </motion.nav>
-      <nav></nav>
     </div>
   );
 };

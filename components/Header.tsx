@@ -5,7 +5,6 @@ import { Link } from "react-scroll";
 import { useAnimate, stagger, motion } from "framer-motion";
 import { useCallback, useEffect } from "react";
 import { MoonIcon, SunIcon, Bars3Icon } from "@heroicons/react/24/outline";
-
 const Header: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
   const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
@@ -43,7 +42,7 @@ const Header: React.FC = () => {
   };
   const handleSetActive = (to:string) => {
     setActiveSection(to);
-    window.history.replaceState(null, "", `#${to}`);
+    window.history.replaceState(null, "", `${to}`);
   };
   useEffect(() => {
     animate(
@@ -88,6 +87,12 @@ const Header: React.FC = () => {
             <Link
               className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white hover:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary rounded"
               to="home"
+                      smooth={true}
+              duration={500}
+              activeClass="active"
+              spy={true}
+              offset={50}
+              onSetActive={handleSetActive}
             >
               Home
             </Link>
@@ -96,6 +101,12 @@ const Header: React.FC = () => {
             <Link
               className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
               to="about"
+                      smooth={true}
+              duration={500}
+              activeClass="active"
+              spy={true}
+              offset={50}
+              onSetActive={handleSetActive}
             >
               About
             </Link>
@@ -104,6 +115,12 @@ const Header: React.FC = () => {
             <Link
               className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
               to="experiences"
+                      smooth={true}
+              duration={500}
+              activeClass="active"
+              spy={true}
+              offset={50}
+              onSetActive={handleSetActive}
             >
               Experiences
             </Link>
@@ -112,6 +129,12 @@ const Header: React.FC = () => {
             <Link
               className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
               to="skills"
+                      smooth={true}
+              duration={500}
+              activeClass="active"
+              spy={true}
+              offset={50}
+              onSetActive={handleSetActive}
             >
               Skills
             </Link>
@@ -120,6 +143,12 @@ const Header: React.FC = () => {
             <Link
               className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
               to="contact"
+                      smooth={true}
+              duration={500}
+              activeClass="active"
+              spy={true}
+              offset={50}
+              onSetActive={handleSetActive}
             >
               Contact
             </Link>
@@ -131,7 +160,7 @@ const Header: React.FC = () => {
           headerStickTop ? "translate-y-0" : "translate-y-10 "
         }, hidden md:flex transition-transform duration-300 rounded-3xl items-center text-center justify-center  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`}
         animate={{
-          width: [0, 1000],
+          width: [0, 700],
           borderRadius: headerStickTop ? "0 0 20px 20px" : "40px",
         }}
         transition={{

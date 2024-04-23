@@ -11,7 +11,7 @@ const Skills = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <div className="flex items-center justify-center md:pt-14 mt-20">
+      <div className="flex items-center justify-center md:pt-14 md:mt-20 mt-4">
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
         <h1
           className="md:text-4xl text-2xl px-4 py-2 "
@@ -21,7 +21,7 @@ const Skills = () => {
         </h1>
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
       </div>
-      <div className="md:w-3/5 md:px-0 px-2 grid grid-cols-4 gap-2 mx-auto mt-6">
+      <div className="md:w-3/5 md:px-0 px-2 grid grid-cols-4 gap-2 mx-auto mt-6 ">
         {skills.map((i) => (
           <SkillsCard
             key={i.id}

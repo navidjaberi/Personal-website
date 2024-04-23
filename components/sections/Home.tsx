@@ -12,7 +12,7 @@ const Home = () => {
     router.push("#about");
   };
   return (
-    <div className=" mx-auto md:h-screen flex items-center  dark:text-white text-[#271C35] ">
+    <div className=" mx-auto md:h-screen flex items-center  dark:text-white text-[#271C35] mb-16">
       <div className="flex items-center md:flex-row flex-col-reverse md:mt-1 mt-44">
         <div className="md:w-3/12 md:grow-0 w-full ">
           <div

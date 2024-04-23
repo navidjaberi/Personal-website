@@ -3,6 +3,8 @@ import "./globals.css";
 import { useEffect, useState } from "react";
 import { animateScroll } from "react-scroll";
 import { ArrowLongUpIcon } from "@heroicons/react/24/solid";
+import { Suspense } from 'react'
+import Loading from "./loading";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,19 +27,22 @@ export default function RootLayout({
     });
   }, []);
   return (
+   
     <html lang="en" suppressHydrationWarning={true}>
+       <Suspense fallback={<Loading/>}>
       <body className="App">
         <button
           className={`${
             showScrollBtn ? "opacity-100" : "opacity-0"
-          } sticky top-[48rem] md:top-[43rem] float-right mr-4 bg-lightSecondary dark:bg-darkPrimary dark:border-darkSecondary z-50 rounded-full border border-lightPrimary contact-animation transition-opacity ease-in-out delay-150`}
+          } sticky top-[40rem] md:top-[43rem] float-right mr-10 bg-lightSecondary dark:bg-darkPrimary dark:border-darkSecondary z-50 rounded-full border border-lightPrimary contact-animation transition-opacity ease-in-out delay-150`}
           onClick={scrollTop}
         >
-          <ArrowLongUpIcon className="h-6 w-6 " />
+          <ArrowLongUpIcon className="h-6 w-6 md:h-10 md:w-10" />
         </button>
         {children}
-        
       </body>
+      </Suspense>
     </html>
+  
   );
 }

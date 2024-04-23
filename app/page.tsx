@@ -8,14 +8,15 @@ import {
   scrollSpy,
 } from "react-scroll";
 import AnimatedCursor from "react-animated-cursor";
-import Home from "@/pages/Home";
-import About from "@/pages/About";
-import Experiences from "@/pages/Experiences";
-import Skills from "@/pages/Skills";
-import Contact from "@/pages/Contact";
+import Home from "@/components/sections/Home";
+import About from "@/components/sections/About";
+import Experiences from "@/components/sections/Experiences";
+import Skills from "@/components/sections/Skills";
+import Contact from "@/components/sections/Contact";
 import { ThemeProvider } from "next-themes";
 import Particles from "@/components/particlesbg";
 import { Suspense } from 'react'
+import Loading from "./loading";
 function App() {
 
   useEffect(() => {
@@ -35,7 +36,7 @@ function App() {
     };
   }, []);
   return (
-    <Suspense fallback={<p>Loading feed...</p>}>
+    <Suspense fallback={<Loading/>}>
       <AnimatedCursor
           innerSize={8}
           outerSize={35}

@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import ExperiencesCard from "@/components/base/experience/ExperienceCard";
-import { experiences } from "@/components/base/experience/ExperiencesContent";
+import ExperiencesCard from "@/src/components/base/experience/ExperienceCard";
+import { experiences } from "@/src/components/base/experience/ExperiencesContent";
 const Experiences = () => {
   return (
     <motion.div

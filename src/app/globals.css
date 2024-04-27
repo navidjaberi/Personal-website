@@ -7,20 +7,22 @@
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../public/Sniglet-Regular.ttf");
+  src: url("../../public/Sniglet-Regular.ttf");
 }
 .App {
   text-align: center;
   position: absolute;
   z-index: 40;
 }
+
 html {
-  --cursor-color: #2F1831
+  --cursor-color: #2f1831;
 }
 
 html.dark {
-  --cursor-color: #92C5FD
+  --cursor-color: #92c5fd;
 }
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -44,13 +46,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #0e0e13;
 }
-.contact-animation{
+.contact-animation {
   animation: bounce 1.5s infinite;
 }
 
-
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(-7%);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
@@ -70,6 +72,51 @@ code {
 }
 @media only screen and (max-width: 700px) {
   body AnimatedCursor {
-      display: 'none'
+    display: "none";
   }
+  .spinner {
+    position: absolute;
+  }
+  .spinner-1 {
+    left: -535px;
+    bottom: -650px!important;
+  }
+  .spinner-2 {
+    left: -500px!important;
+    bottom: -805px!important;
+  }
+  .spinner-3 {
+    left: -505px;
+    bottom: -500px!important;
+  }
+}
+.circle {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.letter {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-family: "Poppins", sans-serif;
+  color: #C6BDDC;
+}
+.spinner {
+  position: absolute;
+}
+.spinner-1 {
+  left: -535px;
+  bottom: -240px;
+}
+.spinner-2 {
+  left: -501px;
+  bottom: -380px;
+}
+.spinner-3 {
+  left: -245px;
+  bottom: -101px;
+}
+.loading-container{
+  height: 30vh;
 }

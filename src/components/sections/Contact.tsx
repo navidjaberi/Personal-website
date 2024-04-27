@@ -1,6 +1,6 @@
 "use client";
-import ContactCard from "@/components/base/contact/ContactCard";
-import { contacts } from "@/components/base/contact/ContactContent";
+import ContactCard from "@/src/components/base/contact/ContactCard";
+import { contacts } from "@/src/components/base/contact/ContactContent";
 import Image from "next/image";
 import contactImg from "@/public/contact-img.jpg";
 import contactImgDark from "@/public/contact-img-dark.jpg";

@@ -1,6 +1,6 @@
 "use client";
-import SkillsCard from "@/components/base/skills/SkillsCard";
-import { skills } from "@/components/base//skills/SkillsContent";
+import SkillsCard from "@/src/components/base/skills/SkillsCard";
+import { skills } from "@/src/components/base/skills/SkillsContent";
 import { motion } from "framer-motion";
 const Skills = () => {
   return (

@@ -26,7 +26,7 @@ const Header: React.FC = () => {
     setY(window.scrollY);
   }, []);
   useEffect(() => {
-    setTheme("light");
+    setTheme("dark");
     setY(window.scrollY);
     window.addEventListener("scroll", handleNavigation);
     return () => {
@@ -158,7 +158,7 @@ const Header: React.FC = () => {
       <motion.nav
         className={`${
           headerStickTop ? "translate-y-0" : "translate-y-10 "
-        }, hidden md:flex transition-transform duration-300 rounded-3xl items-center text-center justify-center  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`}
+        }, hidden md:block transition-transform duration-300 rounded-3xl  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`}
         animate={{
           width: [0, 700],
           borderRadius: headerStickTop ? "0 0 20px 20px" : "40px",
@@ -174,6 +174,11 @@ const Header: React.FC = () => {
           },
         }}
       >
+        <motion.div className="items-center text-center justify-center  md:flex" 
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{delay:1.6,duration:3,ease:'easeIn'}}
+        >
         <div className="flex items-center ml-3">
           <button
             onClick={darkModeToggle}
@@ -271,6 +276,7 @@ const Header: React.FC = () => {
             </Link>
           </div>
         </div>
+        </motion.div>
       </motion.nav>
     </div>
   );

@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 const About = () => {
   return (
     <motion.div
-      className=" mx-auto md:h-screen flex items-center dark:text-white text-lightPrimary pt-5"
+      className=" mx-auto  h-dvh dark:text-white text-lightPrimary md:h-auto "
       initial={{ opacity: 0, y: 200 }}
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <div>
-        <div className="flex items-center justify-center md:mt-20">
+      
+        <div className="flex items-center justify-center md:pt-28 pt-16">
           <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
           <h1
             className="md:text-4xl  text-2xl px-4 py-2 "
@@ -21,7 +21,7 @@ const About = () => {
           </h1>
           <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
         </div>
-        <div className="md:w-3/6 mx-auto md:px-0 px-3 md:text-lg text-xs leading-6 md:leading-8 md:mt-10 text-black dark:text-white">
+        <div className="md:w-3/6 mx-auto md:px-0 px-3 md:text-lg text-xs leading-6 md:leading-8 md:mt-10 text-black dark:text-white mt-10">
           <p>
             Welcome to my corner of the web! I&apos;m Navid. a passionate
             26-year-old software engineer hailing from the beautiful land of
@@ -54,7 +54,7 @@ const About = () => {
             meaningful impact in the digital landscape.
           </p>
         </div>
-      </div>
+      
     </motion.div>
   );
 };

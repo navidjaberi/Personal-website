@@ -1,47 +1,67 @@
-"use client"
-import { motion } from "framer-motion";
-import Spinner from "@/src/components/base/Spinner";
+"use client";
+import { motion, useAnimate } from "framer-motion";
+
+import { useEffect } from "react";
 export default function Loading() {
+  const text = "LOADING LOADING LOADING";
+  const characters = text.split("");
+
+  const radius = 80;
+  const fontSize = "18px";
+  const letterSpacing = 14.5;
+
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    console.log(characters);
+    const animateLoader = async () => {
+      const letterAnimation = [];
+      characters.forEach((_, i) => {
+        letterAnimation.push([
+          `.letter-${i}`,
+          { opacity: 0 },
+          { duration: 0.3, at: i === 0 ? "+0.8" : "-0.28" },
+        ]);
+      });
+      characters.forEach((_, i) => {
+        letterAnimation.push([
+          `.letter-${i}`,
+          { opacity: 1 },
+          { duration: 0.3, at: i === 0 ? "+0.8" : "-0.28" },
+        ]);
+      });
+      animate(letterAnimation, {
+        ease: "linear",
+        repeat: Infinity,
+      });
+      animate(
+        scope.current,
+        { rotate: 360 },
+        { duration: 4, ease: "linear", repeat: Infinity }
+      );
+    };
+    animateLoader();
+  }, []);
+
   return (
-    <div className="loading-container" >
-      <motion.div
-        className="spinner spinner-1"
-        initial={{ rotate: 45 }}
-        animate={{ rotate: -315 }}
-        transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
-      >
-        <Spinner
-          text="LO A D IN G    LO A D IN G    LO A D IN G    LO A D IN G"
-          radius={800}
-          fontSize="130px"
-          letterSpacing={4}
-        />
-      </motion.div>
-      <motion.div
-        className="spinner spinner-2"
-        initial={{ rotate: 0 }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
-      >
-        <Spinner
-          text="LO A D IN G    LO A D IN G    LO A D IN G    LO A D IN G"
-          radius={810}
-          fontSize="130px"
-          letterSpacing={5}
-        />
-      </motion.div>
-      <motion.div
-        className="spinner spinner-3"
-        initial={{ rotate: -5 }}
-        animate={{ rotate: -365 }}
-        transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
-      >
-        <Spinner
-          text="LO A D IN G    LO A D IN G    LO A D IN G    LO A D IN G "
-          radius={550}
-          fontSize="130px"
-          letterSpacing={6}
-        />
+    <div className="h-dvh w-screen	  relative  ">
+      <motion.div ref={scope} className="circle" style={{ width: radius * 2 }}>
+        <p aria-label={text} />
+        <p aria-hidden="true" className="text">
+          {characters.map((ch, i) => (
+            <motion.span
+              key={i}
+              className={`letter letter-${i}`}
+              style={{
+                transformOrigin: `0 ${radius}px`,
+                transform: `rotate(${i * letterSpacing}deg)`,
+                fontSize,
+              }}
+            >
+              {ch}
+            </motion.span>
+          ))}
+        </p>
       </motion.div>
     </div>
   );

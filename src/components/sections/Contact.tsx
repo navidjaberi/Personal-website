@@ -11,7 +11,7 @@ const Contact = () => {
   const { theme } = useTheme();
   return (
     <motion.div
-      className=" mx-auto dark:text-white text-lightPrimary mt-32 h-screen"
+      className=" mx-auto dark:text-white text-lightPrimary h-dvh"
       initial={{ opacity: 0, y: 200 }}
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1, y: 0 }}

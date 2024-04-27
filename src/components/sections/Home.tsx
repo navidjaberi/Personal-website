@@ -12,11 +12,11 @@ const Home = () => {
     router.push("#about");
   };
   return (
-    <div className=" mx-auto md:h-screen flex items-center  dark:text-white text-[#271C35] mb-16">
-      <div className="flex items-center md:flex-row flex-col-reverse md:mt-1 mt-44">
+    <div className=" mx-auto md:h-screen h-dvh flex items-center  dark:text-white text-[#271C35] pt-16">
+      <div className="flex items-center md:flex-row flex-col-reverse md:mt-1 ">
         <div className="md:w-3/12 md:grow-0 w-full ">
           <div
-            className="font-black lg:text-9xl text-8xl  flex flex-col lg:-mt-5 "
+            className="font-black lg:text-9xl text-8xl  flex flex-col lg:-mt-5 mt-12"
             style={{ fontFamily: "protest" }}
           >
             <motion.span className="md:text-left md:ml-7 -ml-60 md:-mt-12 ">
@@ -41,7 +41,7 @@ const Home = () => {
             </motion.span>
           </div>
           
-          <motion.div className=" md:ml-7 lg:mt-11 md:mt-4 ">
+          <motion.div className=" md:ml-7 lg:mt-11 md:mt-4 mt-10">
             <motion.p
               className="lg:text-lg md:text-md text-sm px-2  text-black dark:text-white"
               

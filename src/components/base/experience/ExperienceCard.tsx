@@ -11,7 +11,7 @@ const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
       className="w-full dark:text-white text-black flex dark:hover:bg-darkPrimary hover:bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30   "
       initial={{ opacity: 0, y: 100 }}
       whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      whileTap={{ scale: 0.7 }}
       transition={{ type: "spring", stiffness: 400, damping: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
     >

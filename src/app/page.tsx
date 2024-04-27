@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, Suspense } from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import {
   Element,
@@ -12,7 +12,7 @@ import { ThemeProvider } from "next-themes";
 import Loading from "@/src/app/loading";
 const Header = dynamic(() => import("@/src/components/Header"), {
   ssr: false,
-  loading: () => <Loading />
+  loading: () => <Loading />,
 });
 const Home = dynamic(() => import("@/src/components/sections/Home"), {
   ssr: false,
@@ -34,6 +34,7 @@ const Experiences = dynamic(
 );
 const Particles = dynamic(() => import("@/src/components/particlesbg"), {
   ssr: false,
+  loading: () => <Loading />,
 });
 function App() {
   useEffect(() => {
@@ -51,32 +52,35 @@ function App() {
   }, []);
   return (
     <div>
-      <AnimatedCursor
-        innerSize={8}
-        outerSize={35}
-        innerScale={1}
-        outerScale={2}
-        outerAlpha={0}
-        innerStyle={{
-          backgroundColor: "var(--cursor-color)",
-        }}
-        outerStyle={{
-          border: "1px solid var(--cursor-color)",
-        }}
-        clickables={[
-          "a",
-          'input[type="text"]',
-          'input[type="email"]',
-          'input[type="number"]',
-          'input[type="submit"]',
-          'input[type="image"]',
-          "label[for]",
-          "select",
-          "textarea",
-          "button",
-          ".link",
-        ]}
-      />
+      <div className="hidden md:block">
+        <AnimatedCursor
+          innerSize={8}
+          outerSize={35}
+          innerScale={1}
+          outerScale={2}
+          outerAlpha={0}
+          showSystemCursor={false}
+          innerStyle={{
+            backgroundColor: "var(--cursor-color)",
+          }}
+          outerStyle={{
+            border: "1px solid var(--cursor-color)",
+          }}
+          clickables={[
+            "a",
+            'input[type="text"]',
+            'input[type="email"]',
+            'input[type="number"]',
+            'input[type="submit"]',
+            'input[type="image"]',
+            "label[for]",
+            "select",
+            "textarea",
+            "button",
+            ".link",
+          ]}
+        />
+      </div>
       <ThemeProvider attribute="class">
         <Header />
         <Particles />

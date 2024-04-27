@@ -5,13 +5,13 @@ import { experiences } from "@/src/components/base/experience/ExperiencesContent
 const Experiences = () => {
   return (
     <motion.div
-      className=" mx-auto dark:text-white text-lightPrimary pt-5"
+      className=" mx-auto dark:text-white text-lightPrimary pt-5 md:mt-40 "
       initial={{ opacity: 0, y: 200 }}
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <div className="flex items-center justify-center md:mt-20 mt-4">
+      <div className="flex items-center justify-center md:mt-20 mt-10">
         <div className="w-1/5 h-0.5  bg-lightPrimary dark:bg-white"></div>
         <h1
           className="md:text-4xl  text-2xl px-4 py-2 "

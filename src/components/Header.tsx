@@ -60,7 +60,7 @@ const Header: React.FC = () => {
   return (
     <div>
       <nav className="menu" ref={scope}>
-        <div className="md:hidden flex items-center mt-10">
+        <div className="md:hidden flex items-center h-32">
           <motion.button
             whileTap={{ scale: 1.1 }}
             className={`${

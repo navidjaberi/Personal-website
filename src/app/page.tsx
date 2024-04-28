@@ -12,7 +12,7 @@ import { ThemeProvider } from "next-themes";
 import Loading from "@/src/app/loading";
 const Header = dynamic(() => import("@/src/components/Header"),{
   ssr: false,
-  loading: () => <Loading />,
+
 });
 const Home = dynamic(() => import("@/src/components/sections/Home"), {
   ssr: false,

@@ -58,8 +58,8 @@ const Header: React.FC = () => {
   }, [menuActive]);
 
   return (
-    <div>
-      <nav className="menu" ref={scope}>
+    <>
+      <motion.nav className="menu" ref={scope} animate={{opacity:[0,1]}} transition={{duration:2}}>
         <div className="md:hidden flex items-center h-32">
           <motion.button
             whileTap={{ scale: 1.1 }}
@@ -81,7 +81,7 @@ const Header: React.FC = () => {
         <motion.ul
           className={`${
             menuActive ? "block" : "hidden"
-          } divide-y-[0.4px] md:hidden  transition duration-300 bg-lightSecondary dark:bg-darkPrimary mt-1 mx-1 border-[0.4px]`}
+          } divide-y-[0.4px] md:hidden  transition duration-300 bg-lightSecondary dark:bg-darkPrimary -mt-9 mb-12 mx-3 border-[0.4px]`}
         >
           <motion.li>
             <Link
@@ -154,7 +154,7 @@ const Header: React.FC = () => {
             </Link>
           </motion.li>
         </motion.ul>
-      </nav>
+      </motion.nav>
       <motion.nav
         className={`${
           headerStickTop ? "translate-y-0" : "translate-y-10 "
@@ -283,7 +283,7 @@ const Header: React.FC = () => {
           </div>
         </motion.div>
       </motion.nav>
-    </div>
+    </>
   );
 };
 export default Header;

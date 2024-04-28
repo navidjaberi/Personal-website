@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import { motion, useAnimate } from "framer-motion";
 import { useEffect } from "react";
 export default function Loading() {
@@ -9,12 +8,12 @@ export default function Loading() {
   const fontSize = "18px";
   const letterSpacing = 14.5;
   const [scope, animate] = useAnimate();
+  type AnimationStep = [
+    string,
+    { opacity: number },
+    { duration: number; at: string }
+  ];
   useEffect(() => {
-    type AnimationStep = [
-      string,
-      { opacity: number },
-      { duration: number; at: string }
-    ];
     const animateLoader = async () => {
       const letterAnimation: AnimationStep[] = [];
       characters.forEach((_, i) => {

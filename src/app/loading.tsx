@@ -1,21 +1,22 @@
 "use client";
-import { motion, useAnimate } from "framer-motion";
 
+import { motion, useAnimate } from "framer-motion";
 import { useEffect } from "react";
 export default function Loading() {
   const text = "LOADING LOADING LOADING";
   const characters = text.split("");
-
   const radius = 80;
   const fontSize = "18px";
   const letterSpacing = 14.5;
-
   const [scope, animate] = useAnimate();
-
   useEffect(() => {
-    console.log(characters);
+    type AnimationStep = [
+      string,
+      { opacity: number },
+      { duration: number; at: string }
+    ];
     const animateLoader = async () => {
-      const letterAnimation = [];
+      const letterAnimation: AnimationStep[] = [];
       characters.forEach((_, i) => {
         letterAnimation.push([
           `.letter-${i}`,
@@ -23,6 +24,7 @@ export default function Loading() {
           { duration: 0.3, at: i === 0 ? "+0.8" : "-0.28" },
         ]);
       });
+
       characters.forEach((_, i) => {
         letterAnimation.push([
           `.letter-${i}`,
@@ -31,7 +33,6 @@ export default function Loading() {
         ]);
       });
       animate(letterAnimation, {
-        ease: "linear",
         repeat: Infinity,
       });
       animate(

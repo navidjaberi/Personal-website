@@ -10,7 +10,7 @@ import {
 import AnimatedCursor from "react-animated-cursor";
 import { ThemeProvider } from "next-themes";
 import Loading from "@/src/app/loading";
-const Header = dynamic(() => import("@/src/components/Header"), {
+const Header = dynamic(() => import("@/src/components/Header"),{
   ssr: false,
   loading: () => <Loading />,
 });
@@ -34,7 +34,7 @@ const Experiences = dynamic(
 );
 const Particles = dynamic(() => import("@/src/components/particlesbg"), {
   ssr: false,
-  loading: () => <Loading />,
+  loading: () => <Loading />
 });
 function App() {
   useEffect(() => {
@@ -105,4 +105,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default App

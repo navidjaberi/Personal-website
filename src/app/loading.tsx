@@ -45,7 +45,7 @@ export default function Loading() {
   }, []);
 
   return (
-    <div className="h-dvh w-screen	  relative  ">
+    <div className="h-dvh w-screen	md:h-auto  relative md:mt-80 ">
       <motion.div ref={scope} className="circle" style={{ width: radius * 2 }}>
         <p aria-label={text} />
         <p aria-hidden="true" className="text">

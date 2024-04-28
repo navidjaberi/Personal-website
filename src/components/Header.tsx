@@ -40,7 +40,7 @@ const Header: React.FC = () => {
   const toggleMenu = () => {
     setMenuActive((prv) => !prv);
   };
-  const handleSetActive = (to:string) => {
+  const handleSetActive = (to: string) => {
     setActiveSection(to);
     window.history.replaceState(null, "", `${to}`);
   };
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
             <Link
               className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white hover:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary rounded"
               to="home"
-                      smooth={true}
+              smooth={true}
               duration={500}
               activeClass="active"
               spy={true}
@@ -101,7 +101,7 @@ const Header: React.FC = () => {
             <Link
               className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
               to="about"
-                      smooth={true}
+              smooth={true}
               duration={500}
               activeClass="active"
               spy={true}
@@ -115,7 +115,7 @@ const Header: React.FC = () => {
             <Link
               className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
               to="experiences"
-                      smooth={true}
+              smooth={true}
               duration={500}
               activeClass="active"
               spy={true}
@@ -129,7 +129,7 @@ const Header: React.FC = () => {
             <Link
               className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
               to="skills"
-                      smooth={true}
+              smooth={true}
               duration={500}
               activeClass="active"
               spy={true}
@@ -143,7 +143,7 @@ const Header: React.FC = () => {
             <Link
               className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
               to="contact"
-                      smooth={true}
+              smooth={true}
               duration={500}
               activeClass="active"
               spy={true}
@@ -160,6 +160,7 @@ const Header: React.FC = () => {
           headerStickTop ? "translate-y-0" : "translate-y-10 "
         }, hidden md:block transition-transform duration-300 rounded-3xl  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`}
         animate={{
+          opacity:[0,1],
           width: [0, 700],
           borderRadius: headerStickTop ? "0 0 20px 20px" : "40px",
         }}
@@ -169,113 +170,117 @@ const Header: React.FC = () => {
             ease: "easeInOut",
             times: [0, 0.2, 0.5, 0.8, 1],
           },
+          opacity:{
+            duration:3
+          },
           borderRadius: {
             duration: 0.1,
           },
         }}
       >
-        <motion.div className="items-center text-center justify-center  md:flex" 
-        initial={{opacity:0}}
-        animate={{opacity:1}}
-        transition={{delay:1.6,duration:3,ease:'easeIn'}}
+        <motion.div
+          className="items-center text-center justify-center  md:flex"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.6, duration: 3, ease: "easeIn" }}
         >
-        <div className="flex items-center ml-3">
-          <button
-            onClick={darkModeToggle}
-            className=" transition-all duration-100 "
-          >
-            {theme !== "dark" && <MoonIcon className="h-6 w-6 text-white" />}
-            {theme === "dark" && <SunIcon className="h-6 w-6 " />}
-          </button>
-        </div>
-        <div className="w-full  flex justify-center  items-center ">
-          <div className="text-xs  flex justify-center  items-center gap-11">
-            <Link
-              smooth={true}
-              duration={500}
-              activeClass="active"
-              spy={true}
-              offset={50}
-              onSetActive={handleSetActive}
-              to="home"
-              className={`${
-                activeSection === "home"
-                  ? "text-white scale-110 "
-                  : "text-lightSecondary dark:text-darkSecondary scale-1 "
-              } block  lg:inline-block lg:mt-0  relative group`}
+          <div className="flex items-center ml-3">
+            <button
+              onClick={darkModeToggle}
+              className=" transition-all duration-100 "
             >
-              Home
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full "></span>
-            </Link>
-            <Link
-              smooth={true}
-              duration={500}
-              activeClass="active"
-              spy={true}
-              offset={50}
-              onSetActive={handleSetActive}
-              to="about"
-              className={`${
-                activeSection === "about"
-                  ? "text-white scale-110 "
-                  : "text-lightSecondary dark:text-darkSecondary scale-1 "
-              } block  lg:inline-block lg:mt-0  relative group`}
-            >
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
-              About
-            </Link>
-            <Link
-              smooth={true}
-              duration={500}
-              activeClass="active"
-              spy={true}
-              offset={50}
-              onSetActive={handleSetActive}
-              to="experiences"
-              className={`${
-                activeSection === "experiences"
-                  ? "text-white scale-110 "
-                  : "text-lightSecondary dark:text-darkSecondary scale-1 "
-              } block  lg:inline-block lg:mt-0  relative group`}
-            >
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
-              Experiences
-            </Link>
-            <Link
-              smooth={true}
-              duration={500}
-              activeClass="active"
-              spy={true}
-              offset={50}
-              onSetActive={handleSetActive}
-              to="skills"
-              className={`${
-                activeSection === "skills"
-                  ? "text-white scale-110 "
-                  : "text-lightSecondary dark:text-darkSecondary scale-1 "
-              } block  lg:inline-block lg:mt-0  relative group`}
-            >
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
-              Skills
-            </Link>
-            <Link
-              smooth={true}
-              duration={500}
-              activeClass="active"
-              spy={true}
-              onSetActive={handleSetActive}
-              to="contact"
-              className={`${
-                activeSection === "contact"
-                  ? "text-white scale-110 "
-                  : "text-lightSecondary dark:text-darkSecondary scale-1 "
-              } block  lg:inline-block lg:mt-0  relative group`}
-            >
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
-              Contact
-            </Link>
+              {theme !== "dark" && <MoonIcon className="h-6 w-6 text-white" />}
+              {theme === "dark" && <SunIcon className="h-6 w-6 " />}
+            </button>
           </div>
-        </div>
+          <div className="w-full  flex justify-center  items-center ">
+            <div className="text-xs  flex justify-center  items-center gap-11">
+              <Link
+                smooth={true}
+                duration={500}
+                activeClass="active"
+                spy={true}
+                offset={50}
+                onSetActive={handleSetActive}
+                to="home"
+                className={`${
+                  activeSection === "home"
+                    ? "text-white scale-110 "
+                    : "text-lightSecondary dark:text-darkSecondary scale-1 "
+                } block  lg:inline-block lg:mt-0  relative group`}
+              >
+                Home
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full "></span>
+              </Link>
+              <Link
+                smooth={true}
+                duration={500}
+                activeClass="active"
+                spy={true}
+                offset={50}
+                onSetActive={handleSetActive}
+                to="about"
+                className={`${
+                  activeSection === "about"
+                    ? "text-white scale-110 "
+                    : "text-lightSecondary dark:text-darkSecondary scale-1 "
+                } block  lg:inline-block lg:mt-0  relative group`}
+              >
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
+                About
+              </Link>
+              <Link
+                smooth={true}
+                duration={500}
+                activeClass="active"
+                spy={true}
+                offset={50}
+                onSetActive={handleSetActive}
+                to="experiences"
+                className={`${
+                  activeSection === "experiences"
+                    ? "text-white scale-110 "
+                    : "text-lightSecondary dark:text-darkSecondary scale-1 "
+                } block  lg:inline-block lg:mt-0  relative group`}
+              >
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
+                Experiences
+              </Link>
+              <Link
+                smooth={true}
+                duration={500}
+                activeClass="active"
+                spy={true}
+                offset={50}
+                onSetActive={handleSetActive}
+                to="skills"
+                className={`${
+                  activeSection === "skills"
+                    ? "text-white scale-110 "
+                    : "text-lightSecondary dark:text-darkSecondary scale-1 "
+                } block  lg:inline-block lg:mt-0  relative group`}
+              >
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
+                Skills
+              </Link>
+              <Link
+                smooth={true}
+                duration={500}
+                activeClass="active"
+                spy={true}
+                onSetActive={handleSetActive}
+                to="contact"
+                className={`${
+                  activeSection === "contact"
+                    ? "text-white scale-110 "
+                    : "text-lightSecondary dark:text-darkSecondary scale-1 "
+                } block  lg:inline-block lg:mt-0  relative group`}
+              >
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
+                Contact
+              </Link>
+            </div>
+          </div>
         </motion.div>
       </motion.nav>
     </div>

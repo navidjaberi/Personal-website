@@ -18,8 +18,8 @@ const Home = () => {
           <motion.div
             className="font-black lg:text-9xl text-8xl  flex flex-col lg:-mt-5 mt-12"
             style={{ fontFamily: "protest" }}
-            animate={{opacity:[0,1]}}
-            transition={{duration:2}}
+            animate={{ opacity: [0, 1] }}
+            transition={{ duration: 2 }}
           >
             <motion.span className="md:text-left md:ml-7 -ml-60 md:-mt-12 ">
               NA
@@ -42,7 +42,6 @@ const Home = () => {
               BERI
             </motion.span>
           </motion.div>
-
           <motion.div className=" md:ml-7 lg:mt-11 md:mt-4 mt-10">
             <motion.p
               className="lg:text-lg md:text-md text-sm px-2  text-black dark:text-white"
@@ -73,17 +72,17 @@ const Home = () => {
             </motion.button>
           </motion.div>
         </div>
-        <div className="md:w-9/12 w-full -mt-36 md:mt-0 md:flex-1 ">
+        <div className="md:w-9/12 w-full  md:mt-0 md:flex-1 ">
           <motion.div
             className="md:px-12 px-3"
             initial={{ opacity: 0.1 }}
             transition={{ duration: 1 }}
             whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+
           >
             <Image
-            
-            
-            priority={true}
+              priority={true}
               src={landingImgLight}
               alt="landing"
               style={

@@ -28,7 +28,7 @@ const Contact = () => {
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
       </div>
       <div className="md:w-3/6 md:px-0 px-4 mx-auto text-lg leading-6 md:text-xs mt-32">
-        <div className="w-full   dark:text-white text-black  dark:bg-darkPrimary bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30 hover:scale-105  ease-in-out duration-500 ">
+        <div className="w-full   dark:text-white text-black  dark:bg-darkPrimary bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30 md:hover:scale-105  ease-in-out duration-500 ">
           <motion.div animate={{ opacity: [null, 0, 100] }}>
             <Image
               src={theme === "dark" ? contactImgDark : contactImg}

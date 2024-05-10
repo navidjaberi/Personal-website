@@ -16,6 +16,7 @@ const Header = dynamic(() => import("@/src/components/Header"),{
 });
 const Home = dynamic(() => import("@/src/components/sections/Home"), {
   ssr: false,
+  loading: () => <Loading />
 });
 const About = dynamic(() => import("@/src/components/sections/About"), {
   ssr: false,
@@ -32,10 +33,11 @@ const Experiences = dynamic(
     ssr: false,
   }
 );
-const Particles = dynamic(() => import("@/src/components/particlesbg"), {
-  ssr: false,
-  loading: () => <Loading />
-});
+// const Particles = dynamic(() => import("@/src/components/particlesbg"), {
+//   ssr: false,
+//   loading: () => <Loading />
+// });
+import Particles from "@/src/components/particlesbg";
 function App() {
   useEffect(() => {
     // Registering the 'begin' event and logging it to the console when triggered.

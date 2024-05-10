@@ -8,12 +8,13 @@ const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
 }) => {
   return (
     <motion.div
-      className="w-full dark:text-white text-black flex dark:hover:bg-darkPrimary hover:bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30   "
+      className="w-full dark:text-white text-black flex dark:hover:bg-darkPrimary hover:bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30  bg-[#DDD0C8] dark:bg-black"
       initial={{ opacity: 0, y: 100 }}
-      whileHover={{ scale: 1.1 }}
+      whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.7 }}
       transition={{ type: "spring", stiffness: 400, damping: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 ,}}
+      viewport={{ once: true }}
     >
       <div className="w-1/4 ">
         <p className="uppercase md:text-xs text-xs  text-gray-100 opacity-50 mt-1">
@@ -21,7 +22,7 @@ const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
         </p>
       </div>
       <div className="w-3/4 text-left">
-        <h1 className="md:text-xl text-xs ">{title}</h1>
+        <h1 className="md:text-xl text-xs ">{title}</h1>                    
         <p className="md:text-base text-xs mt-3 leading-7">{description}</p>
         {skills.map((i) => (
           <button

@@ -26,7 +26,6 @@ const Header: React.FC = () => {
     setY(window.scrollY);
   }, []);
   useEffect(() => {
-    setTheme("dark");
     setY(window.scrollY);
     window.addEventListener("scroll", handleNavigation);
     return () => {

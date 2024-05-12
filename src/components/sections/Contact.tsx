@@ -2,13 +2,14 @@
 import ContactCard from "@/src/components/base/contact/ContactCard";
 import { contacts } from "@/src/components/base/contact/ContactContent";
 import Image from "next/image";
-import contactImg from "@/public/contact-img.jpg";
-import contactImgDark from "@/public/contact-img-dark.jpg";
+import contactImg from "@/public/img/contact-img.jpg";
+import contactImgDark from "@/public/img/contact-img-dark.jpg";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import Link from "next/link";
+
 const Contact = () => {
   const { theme } = useTheme();
+
   return (
     <motion.div
       className=" mx-auto dark:text-white text-lightPrimary h-dvh"
@@ -39,15 +40,9 @@ const Contact = () => {
           <div className="mt-8 md:text-xl text-xs">
             <p>Thanks for visiting!</p>
             <p className="mt-3">
-              If you&apos;d like to contact,feel free to reach me by social media or
-              Email
+              If you&apos;d like to contact,feel free to reach me by social
+              media or Email
             </p>
-
-            <Link href='' target="_blank">
-              <button className="border text-xs md:text-lg px-4 py-1 mt-5 rounded-3xl d-flex items-center bg-lightSecondary border-lightPrimary dark:bg-transparent dark:text-darkSecondary dark:border-darkSecondary ">
-                Downlaod Resume
-              </button>
-            </Link>
           </div>
           <div className=" grid grid-cols-5 gap-1 mx-auto mt-3">
             {contacts.map((i) => (

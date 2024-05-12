@@ -51,7 +51,7 @@ export default function Loading() {
           {characters.map((ch, i) => (
             <motion.span
               key={i}
-              className={`letter letter-${i}`}
+              className={`letter letter-${i} dark:text-lightSecondary text-darkPrimary`}
               style={{
                 transformOrigin: `0 ${radius}px`,
                 transform: `rotate(${i * letterSpacing}deg)`,

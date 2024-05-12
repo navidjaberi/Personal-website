@@ -1,16 +1,25 @@
 "use client";
 import classes from "@/styles/home.module.css";
-import landingImgLight from "@/public/landing.jpg";
+import landingImgLight from "@/public/img/landing.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import { useRouter } from "next/navigation";
+import { animateScroll } from 'react-scroll';
+import { useEffect } from "react";
 const Home = () => {
-  const router = useRouter();
   const { theme } = useTheme();
   const readMoreHandler = () => {
-    router.push("#about");
+    animateScroll.scrollTo(850, {
+      duration: 500,
+      smooth: true,
+    });
   };
+  useEffect(()=>{
+    animateScroll.scrollTo(50, {
+      duration: 100,
+
+    });
+  },[])
   return (
     <div className=" mx-auto md:h-screen h-dvh flex items-center  dark:text-white text-[#271C35] pt-16">
       <div className="flex items-center md:flex-row flex-col-reverse md:mt-1 ">
@@ -42,7 +51,7 @@ const Home = () => {
               BERI
             </motion.span>
           </motion.div>
-          <motion.div className=" md:ml-7 lg:mt-11 md:mt-4 mt-10">
+          <motion.div className=" md:ml-7 lg:mt-11 md:mt-4 mt-10 ">
             <motion.p
               className="lg:text-lg md:text-md text-sm px-2  text-black dark:text-white"
               animate={{ x: 0 }}
@@ -65,7 +74,7 @@ const Home = () => {
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.8 }}
               initial={{ x: -500 }}
-              className="border text-xs md:text-lg px-4 py-1 mt-5 rounded-3xl d-flex items-center bg-lightSecondary border-lightPrimary dark:bg-transparent dark:text-darkSecondary dark:border-darkSecondary "
+              className="hidden md:block border text-xs md:text-lg px-4 py-1 mt-5 mx-auto rounded-3xl  items-center bg-lightSecondary border-lightPrimary dark:bg-transparent dark:text-darkSecondary dark:border-darkSecondary "
               onClick={readMoreHandler}
             >
               read more

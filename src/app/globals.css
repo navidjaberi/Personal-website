@@ -7,7 +7,7 @@
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../public/Sniglet-Regular.ttf");
+  src: url("../../public/fonts/Sniglet-Regular.ttf");
 }
 .App {
   text-align: center;
@@ -39,7 +39,6 @@ body {
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0e0e13;
 }
 .contact-animation {
   animation: bounce 1.5s infinite;
@@ -75,7 +74,7 @@ code {
   position: absolute;
   top: 0;
   left: 50%;
-  color: #C6BDDC;
+
 }
 @media only screen and (max-width: 700px) {
   

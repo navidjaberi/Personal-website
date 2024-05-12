@@ -2,6 +2,7 @@
 import "./globals.css";
 import { useEffect, useState } from "react";
 import { animateScroll } from "react-scroll";
+import { useTheme } from "next-themes";
 import { ArrowLongUpIcon } from "@heroicons/react/24/solid";
 export default function RootLayout({
   children,
@@ -25,8 +26,8 @@ export default function RootLayout({
     });
   }, []);
   return (
-    <html lang="en" suppressHydrationWarning={true} >
-      <body className="App overflow-x-hidden" >
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className="App overflow-x-hidden dark:bg-black bg-[#DDD0C8]">
         <button
           className={`${
             showScrollBtn ? "opacity-100" : "opacity-0"

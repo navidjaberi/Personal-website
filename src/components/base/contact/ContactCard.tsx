@@ -13,7 +13,7 @@ const ContactCard: React.FC<ContactCardProps> = ({
         <motion.svg
           viewBox={viewBox}
           fill="currentColor"
-          className={`mx-auto dark:opacity-50 dark:hover:opacity-100 cursor-pointer ${color} w-11 h-11 md:w-20 md:h-20`}
+          className={`mx-auto dark:opacity-50 dark:hover:opacity-100 cursor-pointer ${color} w-11 h-11 md:w-20 md:h-20 focus:outline-none`}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
           transition={{

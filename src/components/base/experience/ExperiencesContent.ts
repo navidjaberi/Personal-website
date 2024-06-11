@@ -2,7 +2,7 @@ export const experiences = [
   {
     id: 1,
     title: "Front-end Developer-(Rayanik Company)",
-    date: "sep 2013 - present",
+    date: "sep 2023 - present",
     description: `Designed and developed a Progressive Web Application (PWA) using Nuxt
       3 and Vuetify. Specialized in front-end technologies, including
       JavaScript, HTML, and CSS. Collaborated with cross-functional teams to
@@ -26,7 +26,7 @@ export const experiences = [
   {
     id: 2,
     title: "Front-end Developer-(Trader4 Company)",
-    date: "may 2013 - july 2013",
+    date: "may 2023 - july 2023",
     description: `Successfully contributed as a remote Front-End Developer, specializing in Nuxt 3, Tailwind, Git, and Jira.
       Played a pivotal role in developing and maintaining web applications, ensuring seamless user experiences.
       Collaborated with remote teams, utilizing version control systems and project management tools to streamline workflows.

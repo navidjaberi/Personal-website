@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
+import Link from 'next/link'
 import ExperiencesCardProps  from "../../types/ExperiencesCard";
 const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
   date,
   title,
   description,
   skills,
+  link,
 }) => {
   return (
+    <Link href={link}>
     <motion.div
       className="w-full dark:text-white text-black flex dark:hover:bg-darkPrimary hover:bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30  bg-[#DDD0C8] dark:bg-black"
       initial={{ opacity: 0, y: 100 }}
@@ -34,6 +37,7 @@ const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
         ))}
       </div>
     </motion.div>
+    </Link>
   );
 };
 export default ExperiencesCard;

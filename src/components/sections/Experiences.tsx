@@ -29,6 +29,7 @@ const Experiences = () => {
             title={i.title}
             description={i.description}
             skills={i.skills}
+            link={i.link}
           />
         ))}
       </div>

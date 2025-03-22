@@ -5,6 +5,8 @@ import { Link } from "react-scroll";
 import { useAnimate, stagger, motion } from "framer-motion";
 import { useCallback, useEffect } from "react";
 import { MoonIcon, SunIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import { usePathname, useRouter } from "next/navigation";
+import { useTransition } from "react";
 const Header: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
   const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
@@ -13,9 +15,17 @@ const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [menuActive, setMenuActive] = useState<boolean>(false);
   const [headerStickTop, setHeaderStickTop] = useState<boolean>(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
   const [y, setY] = useState<number>(
     typeof window !== "undefined" ? window.scrollY : 0
   );
+  const switchLanguage = (locale: string) => {
+    startTransition(() => {
+      router.push(`/${locale}${pathname}`);
+    });
+  };
   const handleNavigation = useCallback((e: any) => {
     const window = e.currentTarget;
     if (window.scrollY > 800) {
@@ -43,6 +53,7 @@ const Header: React.FC = () => {
     setActiveSection(to);
     window.history.replaceState(null, "", `${to}`);
   };
+
   useEffect(() => {
     animate(
       "li",
@@ -58,7 +69,12 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <motion.nav className="menu" ref={scope} animate={{opacity:[0,1]}} transition={{duration:2}}>
+      <motion.nav
+        className="menu"
+        ref={scope}
+        animate={{ opacity: [0, 1] }}
+        transition={{ duration: 2 }}
+      >
         <div className="md:hidden flex items-center h-32">
           <motion.button
             whileTap={{ scale: 1.1 }}
@@ -159,7 +175,7 @@ const Header: React.FC = () => {
           headerStickTop ? "translate-y-0" : "translate-y-10 "
         }, hidden md:block transition-transform duration-300 rounded-3xl  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`}
         animate={{
-          opacity:[0,1],
+          opacity: [0, 1],
           width: [0, 700],
           borderRadius: headerStickTop ? "0 0 20px 20px" : "40px",
         }}
@@ -169,8 +185,8 @@ const Header: React.FC = () => {
             ease: "easeInOut",
             times: [0, 0.2, 0.5, 0.8, 1],
           },
-          opacity:{
-            duration:3
+          opacity: {
+            duration: 3,
           },
           borderRadius: {
             duration: 0.1,

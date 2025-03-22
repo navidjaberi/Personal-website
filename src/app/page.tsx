@@ -12,7 +12,6 @@ import { ThemeProvider } from "next-themes";
 import Loading from "@/src/app/loading";
 const Header = dynamic(() => import("@/src/components/Header"),{
   ssr: false,
-
 });
 const Home = dynamic(() => import("@/src/components/sections/Home"), {
   ssr: false,

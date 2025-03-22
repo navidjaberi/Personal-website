@@ -35,7 +35,7 @@ const About = () => {
             exhilarating. I thrive on bringing visions to life, whether
             it&apos;s designing sleek websites or developing robust web
             applications. Armed with my expertise in JavaScript and proficiency
-            in frameworks like Vue.js, Nuxt.js, React.js, and Next.js, I pride
+            in frameworks like Vue.js and Nuxt.js, I pride
             myself on creating responsive user interfaces that seamlessly adapt
             to any device.
           </p>

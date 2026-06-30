@@ -1,0 +1,11 @@
+{
+    "nav": {
+      "home": "Home",
+      "about": "About Me",
+      "contact": "Contact"
+    },
+    "hero": {
+      "title": "Hi, I'm Navid",
+      "subtitle": "Web Developer"
+    }
+  }

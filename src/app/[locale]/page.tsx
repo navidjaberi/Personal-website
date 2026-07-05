@@ -8,7 +8,6 @@ import Header from "@/src/components/Header";
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import AnimatedCursor from "react-animated-cursor";
-import { ThemeProvider } from "next-themes";
 import Loading from "@/src/components/SplashScreen";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
@@ -102,7 +101,6 @@ function App() {
         </div>
 
         {/* ---------------- APP ---------------- */}
-        <ThemeProvider attribute="class">
           <Header />
 
           <Particles onReady={() => setParticlesReady(true)} />
@@ -126,7 +124,6 @@ function App() {
           <section id="contact">
             <Contact />
           </section>
-        </ThemeProvider>
       </div>
     </>
   );

@@ -2,11 +2,11 @@
 import { motion, useAnimate } from "framer-motion";
 import { useEffect } from "react";
 export default function Loading() {
-  const text = "LOADING LOADING LOADING";
+  const text = "NAVID JABERI FRONTEND DEVELOPER ";
   const characters = text.split("");
   const radius = 80;
   const fontSize = "18px";
-  const letterSpacing = 14.5;
+  const letterSpacing = 10.5;
   const [scope, animate] = useAnimate();
   type AnimationStep = [
     string,

@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımda",
+    "experiences": "Deneyimler",
+    "skills": "Yetenekler",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "description": "Merhaba, ben Navid.\nSağlam, ölçeklenebilir ürünler geliştirmeyi ve harika kullanıcı deneyimleri oluşturmayı seven bir Frontend Geliştiricisiyim.",
+    "readMore": "Daha Fazla"
+  },
+  "about": {
+    "title": "Hakkımda",
+    "description": "Merhaba, ben Navid 👋 İran'da yaşayan bir Frontend Developer'ım. Son dört yıldan uzun süredir ağırlıklı olarak Vue.js ve Nuxt 3 ile çalışıyor; SaaS platformlarından PWA projelerine ve SEO odaklı landing page'lere kadar birçok farklı ürün geliştiriyorum.\n\nEn çok keyif aldığım şey, karmaşık ve dağınık projeleri temiz, hızlı, sürdürülebilir ve ölçeklenebilir yapılara dönüştürmek. Benim için sadece çalışan kod yazmak değil, aynı zamanda harika bir kullanıcı deneyimi sunan ürünler geliştirmek de önemli.\n\nYazılım geliştirmeye başlamadan önce Figma, Photoshop ve WordPress ile çalışıyordum. Bu tasarım geçmişi bugün hâlâ kullanıcı arayüzleri ve kullanıcı deneyimi hakkında düşünme biçimimi etkiliyor.\n\nAna teknoloji yığınım Vue, Nuxt, TypeScript, Pinia ve Tailwind CSS'den oluşuyor. Bunun yanında React ve Next.js ile de aktif olarak projeler geliştiriyor ve her iki ekosistemde de kendimi güncel tutmayı seviyorum.\n\nBilgisayar mühendisliği diplomam yok; tamamen kendi kendime, gerçek projeler, dokümantasyonlar ve çevrimiçi eğitimlerle öğrendim. Kod yazmadığım zamanlarda yeni teknolojileri keşfetmeyi, frontend performansı üzerine okumalar yapmayı ve biraz kafa dinlemek için dışarı çıkmayı seviyorum."
+  },
+  "contact": {
+    "title": "İletişim",
+    "thanks": "Ziyaret ettiğiniz için teşekkürler!",
+    "description": "Benimle iletişime geçmek isterseniz, sosyal medya veya e-posta üzerinden ulaşabilirsiniz",
+    "cv":"CV'yi İndir"
+  }
+}

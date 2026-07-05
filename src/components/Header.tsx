@@ -1,59 +1,81 @@
 "use client";
 import { useTheme } from "next-themes";
-import { useState } from "react";
-import { Link } from "react-scroll";
+import React, { useRef, useState } from "react";
 import { useAnimate, stagger, motion } from "framer-motion";
 import { useCallback, useEffect } from "react";
+import { Link } from "react-scroll";
 import { MoonIcon, SunIcon, Bars3Icon } from "@heroicons/react/24/outline";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "../i18n/navigation";
 import { useTransition } from "react";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 const Header: React.FC = () => {
+  const languages = [
+    {
+      code: "en",
+      name: "English",
+      flag: "/flags/us.svg",
+    },
+    {
+      code: "fa",
+      name: "فارسی",
+      flag: "/flags/ir.svg",
+    },
+    {
+      code: "tr",
+      name: "Türkçe",
+      flag: "/flags/tr.svg",
+    },
+  ];
+  const navItems = ["home", "about", "experiences", "skills", "contact"];
+  const [open, setOpen] = useState(false);
+  const mobileDropdownRef = useRef<HTMLDivElement | null>(null);
+  const desktopDropdownRef = useRef<HTMLDivElement | null>(null);
+  const locale = useLocale();
   const [activeSection, setActiveSection] = useState<string>("home");
   const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
   const { theme, setTheme } = useTheme();
   const [scope, animate] = useAnimate();
-  const [darkMode, setDarkMode] = useState<boolean | null>(null);
   const [menuActive, setMenuActive] = useState<boolean>(false);
   const [headerStickTop, setHeaderStickTop] = useState<boolean>(false);
   const pathname = usePathname();
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
   const [isPending, startTransition] = useTransition();
-  const [y, setY] = useState<number>(
-    typeof window !== "undefined" ? window.scrollY : 0
-  );
+  const t = useTranslations("nav");
+  const currentLanguage =
+    languages.find((l) => l.code === locale) ?? languages[0];
   const switchLanguage = (locale: string) => {
     startTransition(() => {
-      router.push(`/${locale}${pathname}`);
+      router.replace(pathname, {
+        locale,
+      });
     });
   };
-  const handleNavigation = useCallback((e: any) => {
-    const window = e.currentTarget;
-    if (window.scrollY > 800) {
-      setHeaderStickTop(true);
-    } else {
-      setHeaderStickTop(false);
-    }
-    setY(window.scrollY);
-  }, []);
   useEffect(() => {
-    setY(window.scrollY);
-    window.addEventListener("scroll", handleNavigation);
-    return () => {
-      window.removeEventListener("scroll", handleNavigation);
+    const onScroll = () => {
+      setHeaderStickTop(window.scrollY > 800);
     };
-  }, [handleNavigation]);
+
+    onScroll();
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const darkModeToggle = () => {
-    setDarkMode((prv) => !prv);
     theme == "dark" ? setTheme("light") : setTheme("dark");
   };
   const toggleMenu = () => {
     setMenuActive((prv) => !prv);
   };
-  const handleSetActive = (to: string) => {
-    setActiveSection(to);
-    window.history.replaceState(null, "", `${to}`);
-  };
+  const handleSetActive = (id: string) => {
+    setActiveSection(id);
 
+    window.history.replaceState({}, "", `#${id}`);
+
+    setMenuActive(false);
+  };
   useEffect(() => {
     animate(
       "li",
@@ -67,109 +89,166 @@ const Header: React.FC = () => {
     );
   }, [menuActive]);
 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      const insideMobile = mobileDropdownRef.current?.contains(
+        event.target as Node
+      );
+
+      const insideDesktop = desktopDropdownRef.current?.contains(
+        event.target as Node
+      );
+
+      if (!insideMobile && !insideDesktop) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+
+    if (!hash) return;
+
+    const element = document.getElementById(hash);
+
+    if (!element) return;
+
+    requestAnimationFrame(() => {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <>
-      <motion.nav
-        className="menu"
-        ref={scope}
-        animate={{ opacity: [0, 1] }}
-        transition={{ duration: 2 }}
-      >
-        <div className="md:hidden flex items-center h-32">
-          <motion.button
-            whileTap={{ scale: 1.1 }}
-            className={`${
-              menuActive ? "bg-lightSecondary" : "bg-[#DDD0C8] "
-            } dark:bg-transparent  p-1  rounded-lg mx-1`}
-            onClick={toggleMenu}
-          >
-            <Bars3Icon className="h-6 w-6 " />
-          </motion.button>
-          <button
-            onClick={darkModeToggle}
-            className=" transition-all duration-100 bg-[#DDD0C8] dark:bg-transparent"
-          >
-            {theme !== "dark" && <MoonIcon className="h-6 w-6 text-primary" />}
-            {theme === "dark" && <SunIcon className="h-6 w-6 " />}
-          </button>
+      <div className="menu" ref={scope}>
+        <div className="md:hidden flex items-center justify-between h-16 w-full px-5">
+          <div>
+            <motion.button
+              whileTap={{ scale: 1.1 }}
+              className={`${
+                menuActive ? "bg-lightSecondary" : "bg-[#DDD0C8] "
+              } dark:bg-transparent  p-1  rounded-lg mx-1`}
+              onClick={toggleMenu}
+            >
+              <Bars3Icon className="h-6 w-6 " />
+            </motion.button>
+          </div>
+          <div className="flex items-center">
+            <button onClick={darkModeToggle}>
+              {mounted &&
+                (theme === "dark" ? (
+                  <SunIcon className="h-6 w-6" />
+                ) : (
+                  <MoonIcon className="h-6 w-6 " />
+                ))}
+            </button>
+            <div className="flex items-center ml-3">
+              <div className="relative z-50" ref={mobileDropdownRef}>
+                <button
+                  onClick={() => setOpen(!open)}
+                  className="flex items-center rounded-full  hover:bg-white/10 transition"
+                >
+                  <img
+                    src={currentLanguage.flag}
+                    alt={currentLanguage.name}
+                    className="w-5 h-5 rounded-full"
+                  />
+                </button>
+
+                {open && (
+                  <div
+                    className={`absolute right-0 mt-2 w-44 rounded-xl border   z-[9999]
+
+                bg-lightSecondary  dark:bg-darkPrimary
+                shadow-2xl
+                transition-all duration-200 origin-top-right
+                ${
+                  open
+                    ? "scale-100 opacity-100"
+                    : "pointer-events-none scale-95 opacity-0"
+                }`}
+                  >
+                    {languages.map((language) => (
+                      <button
+                        key={language.code}
+                        onClick={() => {
+                          switchLanguage(language.code);
+                          setOpen(false);
+                        }}
+                        className={`
+                      flex w-full items-center gap-3 px-4 py-3 transition
+                      
+                      ${
+                        currentLanguage.code === language.code
+                          ? "bg-white/10"
+                          : "hover:bg-white/5"
+                      }
+                      `}
+                      >
+                        <img
+                          src={language.flag}
+                          alt={language.name}
+                          className="w-6 h-6 rounded-full"
+                        />
+
+                        <span className="text-darkPrimary dark:text-white">
+                          {language.name}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
         <motion.ul
           className={`${
             menuActive ? "block" : "hidden"
-          } divide-y-[0.4px] md:hidden  transition duration-300 bg-lightSecondary dark:bg-darkPrimary -mt-9 mb-12 mx-3 border-[0.4px]`}
+          } divide-y-[0.4px] md:hidden  transition duration-300 bg-lightSecondary dark:bg-darkPrimary mb-12 mx-3 border-[0.4px]`}
         >
           <motion.li>
-            <Link
-              className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white hover:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary rounded"
-              to="home"
-              smooth={true}
-              duration={500}
-              activeClass="active"
-              spy={true}
-              offset={50}
-              onSetActive={handleSetActive}
-            >
-              Home
-            </Link>
-          </motion.li>
-          <motion.li>
-            <Link
-              className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
-              to="about"
-              smooth={true}
-              duration={500}
-              activeClass="active"
-              spy={true}
-              offset={50}
-              onSetActive={handleSetActive}
-            >
-              About
-            </Link>
-          </motion.li>
-          <motion.li>
-            <Link
-              className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
-              to="experiences"
-              smooth={true}
-              duration={500}
-              activeClass="active"
-              spy={true}
-              offset={50}
-              onSetActive={handleSetActive}
-            >
-              Experiences
-            </Link>
-          </motion.li>
-          <motion.li>
-            <Link
-              className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
-              to="skills"
-              smooth={true}
-              duration={500}
-              activeClass="active"
-              spy={true}
-              offset={50}
-              onSetActive={handleSetActive}
-            >
-              Skills
-            </Link>
-          </motion.li>
-          <motion.li>
-            <Link
-              className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary hover:bg-white hover:bg-blue-50 hover:text-blue-600 rounded"
-              to="contact"
-              smooth={true}
-              duration={500}
-              activeClass="active"
-              spy={true}
-              offset={50}
-              onSetActive={handleSetActive}
-            >
-              Contact
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white hover:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary rounded"
+                to={item}
+                key={item}
+                smooth={true}
+                duration={500}
+                offset={-80}
+                onSetActive={handleSetActive}
+              >
+                {t(item)}
+              </Link>
+            ))}
           </motion.li>
         </motion.ul>
-      </motion.nav>
+      </div>
       <motion.nav
         className={`${
           headerStickTop ? "translate-y-0" : "translate-y-10 "
@@ -200,100 +279,92 @@ const Header: React.FC = () => {
           transition={{ delay: 1.6, duration: 3, ease: "easeIn" }}
         >
           <div className="flex items-center ml-3">
-            <button
-              onClick={darkModeToggle}
-              className=" transition-all duration-100 "
-            >
-              {theme !== "dark" && <MoonIcon className="h-6 w-6 text-white" />}
-              {theme === "dark" && <SunIcon className="h-6 w-6 " />}
+            <button onClick={darkModeToggle}>
+              {mounted &&
+                (theme === "dark" ? (
+                  <SunIcon className="h-6 w-6 " />
+                ) : (
+                  <MoonIcon className="h-6 w-6 text-white" />
+                ))}
             </button>
           </div>
           <div className="w-full  flex justify-center  items-center ">
             <div className="text-xs  flex justify-center  items-center gap-11">
-              <Link
-                smooth={true}
-                duration={500}
-                activeClass="active"
-                spy={true}
-                offset={50}
-                onSetActive={handleSetActive}
-                to="home"
-                className={`${
-                  activeSection === "home"
-                    ? "text-white scale-110 "
-                    : "text-lightSecondary dark:text-darkSecondary scale-1 "
-                } block  lg:inline-block lg:mt-0  relative group`}
+              {navItems.map((item) => (
+                <React.Fragment key={item}>
+                  <Link
+                    className={`${
+                      activeSection === item
+                        ? "text-white scale-110 "
+                        : "text-lightSecondary dark:text-darkSecondary scale-1 "
+                    } block  lg:inline-block lg:mt-0  relative group`}
+                    to={item}
+                    smooth={true}
+                    duration={500}
+                    offset={-80}
+                    onSetActive={handleSetActive}
+                    spy
+                  >
+                    {t(item)}
+                  </Link>
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full "></span>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center ml-3">
+            <div className="relative" ref={desktopDropdownRef}>
+              <button
+                onClick={() => setOpen(!open)}
+                className="flex items-center rounded-full  hover:bg-white/10 transition"
               >
-                Home
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full "></span>
-              </Link>
-              <Link
-                smooth={true}
-                duration={500}
-                activeClass="active"
-                spy={true}
-                offset={50}
-                onSetActive={handleSetActive}
-                to="about"
-                className={`${
-                  activeSection === "about"
-                    ? "text-white scale-110 "
-                    : "text-lightSecondary dark:text-darkSecondary scale-1 "
-                } block  lg:inline-block lg:mt-0  relative group`}
-              >
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
-                About
-              </Link>
-              <Link
-                smooth={true}
-                duration={500}
-                activeClass="active"
-                spy={true}
-                offset={50}
-                onSetActive={handleSetActive}
-                to="experiences"
-                className={`${
-                  activeSection === "experiences"
-                    ? "text-white scale-110 "
-                    : "text-lightSecondary dark:text-darkSecondary scale-1 "
-                } block  lg:inline-block lg:mt-0  relative group`}
-              >
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
-                Experiences
-              </Link>
-              <Link
-                smooth={true}
-                duration={500}
-                activeClass="active"
-                spy={true}
-                offset={50}
-                onSetActive={handleSetActive}
-                to="skills"
-                className={`${
-                  activeSection === "skills"
-                    ? "text-white scale-110 "
-                    : "text-lightSecondary dark:text-darkSecondary scale-1 "
-                } block  lg:inline-block lg:mt-0  relative group`}
-              >
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
-                Skills
-              </Link>
-              <Link
-                smooth={true}
-                duration={500}
-                activeClass="active"
-                spy={true}
-                onSetActive={handleSetActive}
-                to="contact"
-                className={`${
-                  activeSection === "contact"
-                    ? "text-white scale-110 "
-                    : "text-lightSecondary dark:text-darkSecondary scale-1 "
-                } block  lg:inline-block lg:mt-0  relative group`}
-              >
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-lightSecondary dark:bg-darkSecondary transition-width duration-300 group-hover:w-full"></span>
-                Contact
-              </Link>
+                <img
+                  src={currentLanguage.flag}
+                  alt={currentLanguage.name}
+                  className="w-7 h-6 rounded-full"
+                />
+              </button>
+
+              {open && (
+                <div
+                  className={`absolute right-0 mt-2 w-44 rounded-xl border
+                bg-lightPrimary dark:bg-darkPrimary
+                shadow-2xl
+                transition-all duration-200 origin-top-right
+                ${
+                  open
+                    ? "scale-100 opacity-100"
+                    : "pointer-events-none scale-95 opacity-0"
+                }`}
+                >
+                  {languages.map((language) => (
+                    <button
+                      key={language.code}
+                      onClick={() => {
+                        switchLanguage(language.code);
+                        setOpen(false);
+                      }}
+                      className={`
+                      flex w-full items-center gap-3 px-4 py-3 transition
+                      
+                      ${
+                        currentLanguage.code === language.code
+                          ? "bg-white/10"
+                          : "hover:bg-white/5"
+                      }
+                      `}
+                    >
+                      <img
+                        src={language.flag}
+                        alt={language.name}
+                        className="w-6 h-6 rounded-full"
+                      />
+
+                      <span className="text-white">{language.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </motion.div>

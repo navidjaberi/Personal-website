@@ -13,14 +13,21 @@
     "@react-pdf/renderer": "^3.4.4",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.3.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "framer-motion": "^10.12.5-alpha.1",
+    "lucide-react": "^1.22.0",
     "next": "14.1.1",
-    "next-intl": "^4.0.2",
+    "next-intl": "^4.13.0",
+    "radix-ui": "^1.6.1",
     "react": "^18.2.0",
     "react-animated-cursor": "^2.11.2",
     "react-dom": "^18.2.0",
     "react-scroll": "^1.9.0",
-    "sharp": "^0.33.3"
+    "shadcn": "^4.12.0",
+    "sharp": "^0.33.3",
+    "tailwind-merge": "^3.6.0",
+    "tw-animate-css": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",

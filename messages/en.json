@@ -1,11 +1,23 @@
 {
-    "nav": {
-      "home": "Home",
-      "about": "About Me",
-      "contact": "Contact"
-    },
-    "hero": {
-      "title": "Hi, I'm Navid",
-      "subtitle": "Web Developer"
-    }
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experiences": "Experiences",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "description": "Hello my name is Navid,\na Frontend Developer who likes building solid, scalable products\nwith genuinely great user experiences.",
+    "readMore": "Read More"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Hey, I'm Navid 👋 I'm a frontend developer based in Iran, and for the last 4+ years I've basically lived inside Vue.js and Nuxt 3—building everything from multi-app SaaS platforms to PWAs and SEO-focused landing pages.\n\nWhat I really enjoy is taking something messy—three disconnected frontend apps, a backend that doesn't communicate well with the UI, or any complicated project—and turning it into something clean, fast, maintainable, and enjoyable to work on.\n\nI'm passionate about performance, clean architecture, and creating interfaces that not only work well but also feel intuitive. Before becoming a developer, I worked with Figma, Photoshop, and WordPress, which still influences how I approach UI and UX today.\n\nMy primary stack includes Vue, Nuxt, TypeScript, Pinia, and Tailwind CSS, while I also enjoy building projects with React and Next.js. Since JavaScript fundamentals transfer across ecosystems, I like staying comfortable with both.\n\nI'm completely self-taught—no computer science degree, just years of learning through real projects, documentation, and online courses. Outside of programming, I enjoy exploring new technologies, reading about frontend performance, and occasionally disconnecting from the screen to recharge."
+  },
+  "contact": {
+    "title": "Contact",
+    "thanks": "Thanks for visiting!",
+    "description": "If you'd like to contact, feel free to reach me by social media or Email",
+    "cv": "download resume"
   }
+}

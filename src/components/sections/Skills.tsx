@@ -2,7 +2,11 @@
 import SkillsCard from "@/src/components/base/skills/SkillsCard";
 import { skills } from "@/src/components/base/skills/SkillsContent";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+
 const Skills = () => {
+  const t = useTranslations("nav");
+
   return (
     <motion.div
       className=" mx-auto h-dvh md:h-auto dark:text-white text-lightPrimary pt-5 items-center"
@@ -17,7 +21,7 @@ const Skills = () => {
           className="md:text-4xl text-2xl px-4 py-2 "
           style={{ fontFamily: "protest" }}
         >
-          Skills
+          {t('skills')}
         </h1>
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
       </div>

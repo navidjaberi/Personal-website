@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import ScrollButton from "../ScrollButton";
 import Providers from "../providers";
+import { useEffect } from "react";
 export const metadata = {
   title: "Navid Jaberi",
   icons: {
@@ -18,10 +19,15 @@ export default async function LocaleLayout({
   params: { locale: string };
 }) {
   const messages = await getMessages();
-
+  useEffect(() => {
+    document.body.style.visibility = "visible";
+  }, []);
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className="App overflow-x-hidden bg-[#DDD0C8]  dark:bg-black transition-colors">
+      <body
+        className="App overflow-x-hidden bg-[#DDD0C8]  transition-colors"
+        style={{ visibility: "hidden" }}
+      >
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <ScrollButton />

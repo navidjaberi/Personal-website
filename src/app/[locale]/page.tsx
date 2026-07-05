@@ -101,29 +101,29 @@ function App() {
         </div>
 
         {/* ---------------- APP ---------------- */}
-          <Header />
+        <Header />
 
-          <Particles onReady={() => setParticlesReady(true)} />
+        <Particles onReady={() => setParticlesReady(true)} />
 
-          <section id="home">
-            <Home onHeroLoaded={() => setHeroReady(true)} />
-          </section>
+        <section id="home">
+          <Home onHeroLoaded={() => setHeroReady(true)} />
+        </section>
 
-          <section id="about">
-            <About />
-          </section>
+        <section id="about">
+          <About />
+        </section>
 
-          <section id="experiences">
-            <Experiences />
-          </section>
+        <section id="experiences">
+          <Experiences />
+        </section>
 
-          <section id="skills">
-            <Skills />
-          </section>
+        <section id="skills">
+          <Skills />
+        </section>
 
-          <section id="contact">
-            <Contact />
-          </section>
+        <section id="contact">
+          <Contact />
+        </section>
       </div>
     </>
   );

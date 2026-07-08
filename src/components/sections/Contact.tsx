@@ -19,7 +19,7 @@ const Contact = () => {
   }, []);
   return (
     <motion.div
-      className=" mx-auto dark:text-white text-lightPrimary h-dvh "
+      className=" mx-auto dark:text-white text-lightPrimary h-dvh mb-10"
       initial={{ opacity: 0, y: 200 }}
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -53,14 +53,26 @@ const Contact = () => {
           </div>
           <div className="mt-5">
             <motion.a
-              className=" border text-xs md:text-lg px-4 py-1  mx-auto rounded-3xl  items-center bg-lightSecondary border-lightPrimary dark:bg-transparent dark:text-darkSecondary dark:border-darkSecondary "
-              href="/resume/resume.july.pdf"
+              className="inline-flex items-center justify-center text-xs md:text-base px-6 py-2 rounded-3xl font-medium shadow-md transition-colors bg-lightPrimary text-white dark:bg-white dark:text-black hover:bg-opacity-90 border border-transparent"
+              href="/resume/Navid-jaberi-international.pdf"
               download
-              whileHover={{ scale: 2 }}
-              whileTap={{ scale: 0.96 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              {t("cv")}
+              {t("cv1")}
+            </motion.a>
+          </div>
+          <div className="mt-5">
+            <motion.a
+              className="inline-flex items-center justify-center text-xs md:text-base px-6 py-2 rounded-3xl font-medium transition-colors bg-transparent text-lightPrimary border border-lightPrimary dark:text-darkSecondary dark:border-darkSecondary hover:bg-lightPrimary/5 dark:hover:bg-white/5"
+              href="/resume/Navid-jaberi-july-visual.pdf"
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              {t("cv2")}
             </motion.a>
           </div>
 

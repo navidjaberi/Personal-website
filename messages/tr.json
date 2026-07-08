@@ -18,6 +18,7 @@
     "title": "İletişim",
     "thanks": "Ziyaret ettiğiniz için teşekkürler!",
     "description": "Benimle iletişime geçmek isterseniz, sosyal medya veya e-posta üzerinden ulaşabilirsiniz",
-    "cv":"CV'yi İndir"
+    "cv1": "CV'yi İndir (Kurumsal / ATS Uyumlu)",
+    "cv2": "CV'yi İndir (Görsel Versiyon / Fotoğraflı)"
   }
 }

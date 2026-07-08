@@ -18,6 +18,7 @@
     "title": "Contact",
     "thanks": "Thanks for visiting!",
     "description": "If you'd like to contact, feel free to reach me by social media or Email",
-    "cv": "download resume"
+    "cv1": "Download CV (ATS-Friendly / Corporate)",
+    "cv2": "Download CV (Visual Edition / With Photo)"
   }
 }

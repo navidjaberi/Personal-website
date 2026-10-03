@@ -37,7 +37,7 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
           {locale === "fa" ? (
             <motion.div
               className="font-black lg:text-9xl text-8xl  flex flex-col lg:-mt-5 mt-12"
-              style={{ fontFamily: "protest" }}
+              style={{ fontFamily: "serif" }}
               animate={{ opacity: [0, 1] }}
               transition={{ duration: 2 }}
             >
@@ -52,7 +52,7 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
           ) : (
             <motion.div
               className="font-black lg:text-9xl text-8xl  flex flex-col lg:-mt-5 mt-12"
-              style={{ fontFamily: "protest" }}
+              style={{ fontFamily: "serif" }}
               animate={{ opacity: [0, 1] }}
               transition={{ duration: 2 }}
             >

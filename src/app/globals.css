@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-  font-family: "protest";
-  src: url("https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap");
-}
-@font-face {
   font-family: "Poppins";
   src: url("../../public/fonts/Sniglet-Regular.ttf");
 }

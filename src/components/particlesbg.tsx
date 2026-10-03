@@ -9,7 +9,7 @@ type ParticlesBgProps = {
 };
 const ParticlesBg = ({ onReady }: ParticlesBgProps) => {
   const [init, setInit] = useState(false);
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   // this should be run only once per application lifetime
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -187,7 +187,7 @@ const ParticlesBg = ({ onReady }: ParticlesBgProps) => {
       <Particles
         id="tsparticles"
         particlesLoaded={particlesLoaded}
-        options={theme === "dark" ? darkOptions : lightOptions}
+        options={resolvedTheme === "dark" ? darkOptions : lightOptions}
         className="absolute -z-10"
       />
     );

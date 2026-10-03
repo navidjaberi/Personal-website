@@ -34,7 +34,7 @@ const Header: React.FC = () => {
   const locale = useLocale();
   const [activeSection, setActiveSection] = useState<string>("home");
   const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [scope, animate] = useAnimate();
   const [menuActive, setMenuActive] = useState<boolean>(false);
   const [headerStickTop, setHeaderStickTop] = useState<boolean>(false);
@@ -64,7 +64,7 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   const darkModeToggle = () => {
-    theme == "dark" ? setTheme("light") : setTheme("dark");
+    resolvedTheme == "dark" ? setTheme("light") : setTheme("dark");
   };
   const toggleMenu = () => {
     setMenuActive((prv) => !prv);
@@ -161,7 +161,7 @@ const Header: React.FC = () => {
           <div className="flex items-center">
             <button onClick={darkModeToggle}>
               {mounted &&
-                (theme === "dark" ? (
+                (resolvedTheme === "dark" ? (
                   <SunIcon className="h-6 w-6" />
                 ) : (
                   <MoonIcon className="h-6 w-6 " />
@@ -281,7 +281,7 @@ const Header: React.FC = () => {
           <div className="flex items-center ml-3">
             <button onClick={darkModeToggle}>
               {mounted &&
-                (theme === "dark" ? (
+                (resolvedTheme === "dark" ? (
                   <SunIcon className="h-6 w-6 " />
                 ) : (
                   <MoonIcon className="h-6 w-6 text-white" />

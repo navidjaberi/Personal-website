@@ -13,7 +13,7 @@ type HomeProps = {
 };
 const Home = ({ onHeroLoaded }: HomeProps) => {
   const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const t = useTranslations("hero");
   const locale = useLocale();
   const readMoreHandler = () => {
@@ -124,7 +124,7 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
               alt="landing"
               onLoad={() => onHeroLoaded?.()}
               style={
-                mounted && theme === "dark"
+                mounted && resolvedTheme === "dark"
                   ? {
                       filter: "grayscale(100%)",
                       WebkitFilter: "grayscale(100%)",

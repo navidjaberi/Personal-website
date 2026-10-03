@@ -182,7 +182,7 @@ const Header: React.FC = () => {
 
                 {open && (
                   <div
-                    className={`absolute right-0 mt-2 w-44 rounded-xl border   z-[9999]
+                    className={`absolute end-0 mt-2 w-44 rounded-xl border   z-[9999]
 
                 bg-lightSecondary  dark:bg-darkPrimary
                 shadow-2xl
@@ -327,7 +327,7 @@ const Header: React.FC = () => {
 
               {open && (
                 <div
-                  className={`absolute right-0 mt-2 w-44 rounded-xl border
+                  className={`absolute end-0 mt-2 w-44 rounded-xl border
                 bg-lightPrimary dark:bg-darkPrimary
                 shadow-2xl
                 transition-all duration-200 origin-top-right

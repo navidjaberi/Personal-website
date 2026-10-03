@@ -20,7 +20,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} dir={locale === "fa" ? "rtl" : "ltr"} suppressHydrationWarning>
       <body
         className="App overflow-x-hidden bg-[#DDD0C8]  transition-colors"
       >

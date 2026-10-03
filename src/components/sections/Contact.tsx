@@ -27,12 +27,12 @@ const Contact = () => {
     >
       <div className="flex items-center justify-center md:pt-14">
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
-        <h1
+        <h2
           className="md:text-4xl text-2xl px-4 py-2 "
           style={{ fontFamily: "serif" }}
         >
           {t("title")}
-        </h1>
+        </h2>
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
       </div>
       <div className="md:w-3/6 md:px-0 px-4 mx-auto text-lg leading-6 md:text-xs mt-32">
@@ -85,6 +85,7 @@ const Contact = () => {
                 viewBox={i.viewBox}
                 color={i.color}
                 link={i.link}
+                label={i.id}
               />
             ))}
           </div>

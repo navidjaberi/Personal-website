@@ -19,12 +19,12 @@ const Experiences = () => {
     >
       <div className="flex items-center justify-center md:mt-20 mt-10">
         <div className="w-1/5 h-0.5  bg-lightPrimary dark:bg-white"></div>
-        <h1
+        <h2
           className="md:text-4xl  text-2xl px-4 py-2 "
           style={{ fontFamily: "serif" }}
         >
           {t("experiences")}
-        </h1>
+        </h2>
         <div className="w-1/5 h-0.5  bg-lightPrimary dark:bg-white"></div>
       </div>
       <div

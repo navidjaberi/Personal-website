@@ -3,4 +3,5 @@ export default interface ContactCardProps {
     color: string;
     viewBox: string;
     link: string;
+    label: string;
   }

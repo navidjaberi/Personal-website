@@ -24,9 +24,11 @@ export default function ScrollButton() {
   return (
     <button
       className={`${
-        showScrollBtn ? "opacity-100" : "opacity-0"
+        showScrollBtn ? "opacity-100" : "opacity-0 pointer-events-none"
       } sticky top-[40rem] md:top-[43rem] float-right mr-10 bg-lightSecondary dark:bg-darkPrimary dark:border-darkSecondary z-50 rounded-full border border-lightPrimary contact-animation transition-opacity ease-in-out delay-150`}
       onClick={scrollTop}
+      aria-label="Scroll to top"
+      tabIndex={showScrollBtn ? 0 : -1}
     >
       <ArrowLongUpIcon className="h-6 w-6 md:h-10 md:w-10" />
     </button>

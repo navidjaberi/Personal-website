@@ -35,7 +35,7 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
       <div className="flex items-center md:flex-row flex-col-reverse md:mt-1 ">
         <div className="md:w-3/12 md:grow-0 w-full ">
           {locale === "fa" ? (
-            <motion.div
+            <motion.h1
               className="font-black lg:text-9xl text-8xl  flex flex-col lg:-mt-5 mt-12"
               style={{ fontFamily: "serif" }}
               animate={{ opacity: [0, 1] }}
@@ -48,9 +48,9 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
               <motion.span className="md:text-right md:-mt-3  md:text-8xl text-6xl md:mr-12">
                 جابری
               </motion.span>
-            </motion.div>
+            </motion.h1>
           ) : (
-            <motion.div
+            <motion.h1
               className="font-black lg:text-9xl text-8xl  flex flex-col lg:-mt-5 mt-12"
               style={{ fontFamily: "serif" }}
               animate={{ opacity: [0, 1] }}
@@ -76,7 +76,7 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
               >
                 BERI
               </motion.span>
-            </motion.div>
+            </motion.h1>
           )}
           <motion.div
             className=" md:ml-7 lg:mt-11 md:mt-4 mt-10"

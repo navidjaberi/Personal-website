@@ -6,10 +6,11 @@ const ContactCard: React.FC<ContactCardProps> = ({
   color,
   viewBox,
   link,
+  label,
 }) => {
   return (
     <div className="w-full text-white items-center justify-center rounded-xl p-2 md:mt-10   ease-in-out duration-500 mx-auto">
-      <Link href={link} target="_blank">
+      <Link href={link} target="_blank" aria-label={label}>
         <motion.svg
           viewBox={viewBox}
           fill="currentColor"

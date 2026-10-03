@@ -154,12 +154,13 @@ const Header: React.FC = () => {
                 menuActive ? "bg-lightSecondary" : "bg-[#DDD0C8] "
               } dark:bg-transparent  p-1  rounded-lg mx-1`}
               onClick={toggleMenu}
+              aria-label="Menu"
             >
               <Bars3Icon className="h-6 w-6 " />
             </motion.button>
           </div>
           <div className="flex items-center">
-            <button onClick={darkModeToggle}>
+            <button onClick={darkModeToggle} aria-label="Toggle theme">
               {mounted &&
                 (resolvedTheme === "dark" ? (
                   <SunIcon className="h-6 w-6" />
@@ -171,6 +172,7 @@ const Header: React.FC = () => {
               <div className="relative z-50" ref={mobileDropdownRef}>
                 <button
                   onClick={() => setOpen(!open)}
+                  aria-label="Change language"
                   className="flex items-center rounded-full  hover:bg-white/10 transition"
                 >
                   <img
@@ -279,7 +281,7 @@ const Header: React.FC = () => {
           transition={{ delay: 1.6, duration: 3, ease: "easeIn" }}
         >
           <div className="flex items-center ml-3">
-            <button onClick={darkModeToggle}>
+            <button onClick={darkModeToggle} aria-label="Toggle theme">
               {mounted &&
                 (resolvedTheme === "dark" ? (
                   <SunIcon className="h-6 w-6 " />
@@ -316,6 +318,7 @@ const Header: React.FC = () => {
             <div className="relative" ref={desktopDropdownRef}>
               <button
                 onClick={() => setOpen(!open)}
+                aria-label="Change language"
                 className="flex items-center rounded-full  hover:bg-white/10 transition"
               >
                 <img

@@ -17,13 +17,13 @@ const About = () => {
     >
       <div className="flex items-center justify-center md:pt-28 pt-16">
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
-        <h1
+        <h2
           className="md:text-4xl  text-2xl px-4 py-2 "
           style={{ fontFamily: "serif" }}
         >
           {" "}
           {t("title")}{" "}
-        </h1>
+        </h2>
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
       </div>
       <div

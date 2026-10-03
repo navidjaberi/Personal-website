@@ -120,6 +120,7 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
             <Image
               priority
               src={landingImgLight}
+              sizes="(min-width: 768px) 75vw, 100vw"
               alt="landing"
               onLoad={() => onHeroLoaded?.()}
               style={

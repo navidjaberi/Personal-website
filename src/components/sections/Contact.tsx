@@ -45,6 +45,7 @@ const Contact = () => {
               src={mounted && theme === "dark" ? contactImgDark : contactImg}
               className="w-32 rounded-full border-darkPrimary/30 border-2 mx-auto -mt-5 shadow-xl contact-animation "
               alt="Avatar"
+              sizes="128px"
             />
           </motion.div>
           <div className="mt-8 md:text-xl text-xs">

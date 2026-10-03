@@ -3,6 +3,11 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import ScrollButton from "../ScrollButton";
 import Providers from "../providers";
+import { Vazirmatn } from "next/font/google";
+const vazirmatn = Vazirmatn({
+  subsets: ["arabic", "latin"],
+  variable: "--font-vazirmatn",
+});
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -47,7 +52,12 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={locale === "fa" ? "rtl" : "ltr"} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={locale === "fa" ? "rtl" : "ltr"}
+      className={vazirmatn.variable}
+      suppressHydrationWarning
+    >
       <body
         className="App overflow-x-hidden bg-[#DDD0C8]  transition-colors"
       >

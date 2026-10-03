@@ -36,6 +36,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html[lang="fa"] body,
+html[lang="fa"] [style*="serif"] {
+  font-family: var(--font-vazirmatn), "Poppins", sans-serif !important;
+}
 .contact-animation {
   animation: bounce 1.5s infinite;
 }

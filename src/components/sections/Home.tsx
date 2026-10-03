@@ -4,7 +4,7 @@ import landingImgLight from "@/public/img/landing.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import { animateScroll } from "react-scroll";
+import { animateScroll, scroller } from "react-scroll";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
@@ -17,9 +17,10 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
   const t = useTranslations("hero");
   const locale = useLocale();
   const readMoreHandler = () => {
-    animateScroll.scrollTo(850, {
+    scroller.scrollTo("about", {
       duration: 500,
       smooth: true,
+      offset: -80,
     });
   };
   useEffect(() => {

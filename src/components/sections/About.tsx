@@ -30,7 +30,7 @@ const About = () => {
         className="md:w-3/6 mx-auto md:px-0 px-3 md:text-lg text-xs leading-6 md:leading-8 md:mt-10 text-black dark:text-white mt-10"
         dir={locale === "fa" ? "rtl" : "ltr"}
       >
-        <p className="whitespace-pre-line">{t("description")}</p>
+        <p className="whitespace-pre-line text-start">{t("description")}</p>
       </div>
     </motion.div>
   );

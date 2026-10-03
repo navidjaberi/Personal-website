@@ -98,7 +98,7 @@ export const skills = [
   },
   {
     id: "vuetify",
-    name: "Veutify",
+    name: "Vuetify",
     fill: "#1692EF",
     viewBox:"0 0 24 24",
     pathD:
@@ -131,7 +131,7 @@ export const skills = [
   },
   {
     id: "wordpress",
-    name: "Wordpress",
+    name: "WordPress",
     fill: "#207195",
     viewBox:"0 0 32 32",
     pathD:

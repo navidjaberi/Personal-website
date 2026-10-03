@@ -43,7 +43,7 @@ const Contact = () => {
           <motion.div animate={{ opacity: [null, 0, 100] }}>
             <Image
               src={mounted && resolvedTheme === "dark" ? contactImgDark : contactImg}
-              className="w-32 rounded-full border-darkPrimary/30 border-2 mx-auto -mt-5 shadow-xl contact-animation "
+              className="w-32 h-32 object-cover rounded-full border-darkPrimary/30 border-2 mx-auto -mt-5 shadow-xl contact-animation "
               alt="Avatar"
               sizes="128px"
             />

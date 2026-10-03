@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Navid Jaberi | Frontend Geliştirici",
+    "description": "Vue, Nuxt, React ve Next.js ile 4 yılı aşkın deneyime sahip frontend geliştirici Navid Jaberi. Deneyim, yetenekler, özgeçmiş ve iletişim."
+  },
   "nav": {
     "home": "Ana Sayfa",
     "about": "Hakkımda",

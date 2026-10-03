@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Navid Jaberi | Frontend Developer",
+    "description": "Navid Jaberi, a frontend developer with 4+ years of experience in Vue, Nuxt, React and Next.js. Experience, skills, resume and contact."
+  },
   "nav": {
     "home": "Home",
     "about": "About",

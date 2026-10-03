@@ -1,15 +1,42 @@
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import ScrollButton from "../ScrollButton";
 import Providers from "../providers";
-export const metadata = {
-  title: "Navid Jaberi",
-  icons: {
-    icon: "/img/favicon.svg",
-    shortcut: "/img/favicon.svg",
-  },
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "meta" });
+
+  return {
+    metadataBase: new URL("https://personal-website-flax-six-86.vercel.app"),
+    title: t("title"),
+    description: t("description"),
+    icons: {
+      icon: "/img/favicon.svg",
+      shortcut: "/img/favicon.svg",
+    },
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        fa: "/fa",
+        en: "/en",
+        tr: "/tr",
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: `/${locale}`,
+      siteName: "Navid Jaberi",
+      locale,
+      type: "website",
+      images: ["/img/landing.jpg"],
+    },
+  };
+}
 export default async function LocaleLayout({
   children,
   params: { locale },

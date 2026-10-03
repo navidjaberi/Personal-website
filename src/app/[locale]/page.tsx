@@ -19,9 +19,8 @@ const Particles = dynamic(() => import("@/src/components/particlesbg"), {
 function App() {
   const sections = ["home", "about", "experiences", "skills", "contact"];
   const [heroReady, setHeroReady] = useState(false);
-  const [particlesReady, setParticlesReady] = useState(false);
 
-  const appReady = heroReady && particlesReady;
+  const appReady = heroReady;
 
   // -------------------- SCROLL PROGRESS BAR --------------------
   useEffect(() => {
@@ -103,7 +102,7 @@ function App() {
         {/* ---------------- APP ---------------- */}
         <Header />
 
-        <Particles onReady={() => setParticlesReady(true)} />
+        <Particles />
 
         <section id="home">
           <Home onHeroLoaded={() => setHeroReady(true)} />

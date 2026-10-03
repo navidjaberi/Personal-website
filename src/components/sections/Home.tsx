@@ -86,7 +86,7 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
               className="lg:text-lg md:text-md text-sm px-2  text-black dark:text-white"
               animate={{ x: 0 }}
               initial={{ x: -500 }}
-              transition={{ delay: 3, duration: 1 }}
+              transition={{ delay: 1, duration: 1 }}
             >
               {t("description")}
             </motion.p>
@@ -94,7 +94,7 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
               animate={{
                 x: 0,
                 transition: {
-                  delay: 3,
+                  delay: 1,
                   duration: 1,
                 },
               }}

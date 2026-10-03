@@ -1,9 +1,9 @@
 "use client"
 import { motion, useAnimate } from "framer-motion";
 import { useEffect } from "react";
+const text = "NAVID JABERI FRONTEND DEVELOPER ";
+const characters = text.split("");
 export default function Loading() {
-  const text = "NAVID JABERI FRONTEND DEVELOPER ";
-  const characters = text.split("");
   const radius = 80;
   const fontSize = "18px";
   const letterSpacing = 10.5;
@@ -41,7 +41,7 @@ export default function Loading() {
       );
     };
     animateLoader();
-  }, []);
+  }, [animate, scope]);
 
   return (
     <div className="h-dvh w-screen	md:h-auto  relative md:mt-80 ">

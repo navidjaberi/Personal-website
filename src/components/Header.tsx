@@ -9,6 +9,7 @@ import { usePathname, useRouter } from "../i18n/navigation";
 import { useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
+import Image from "next/image";
 const Header: React.FC = () => {
   const languages = [
     {
@@ -33,7 +34,6 @@ const Header: React.FC = () => {
   const desktopDropdownRef = useRef<HTMLDivElement | null>(null);
   const locale = useLocale();
   const [activeSection, setActiveSection] = useState<string>("home");
-  const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
   const { resolvedTheme, setTheme } = useTheme();
   const [scope, animate] = useAnimate();
   const [menuActive, setMenuActive] = useState<boolean>(false);
@@ -84,10 +84,10 @@ const Header: React.FC = () => {
         : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
       {
         duration: 0.2,
-        delay: menuActive ? staggerMenuItems : 0,
+        delay: menuActive ? stagger(0.1, { startDelay: 0.15 }) : 0,
       }
     );
-  }, [menuActive]);
+  }, [menuActive, animate]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -175,9 +175,11 @@ const Header: React.FC = () => {
                   aria-label="Change language"
                   className="flex items-center rounded-full  hover:bg-white/10 transition"
                 >
-                  <img
+                  <Image
                     src={currentLanguage.flag}
                     alt={currentLanguage.name}
+                    width={20}
+                    height={20}
                     className="w-5 h-5 rounded-full"
                   />
                 </button>
@@ -212,9 +214,11 @@ const Header: React.FC = () => {
                       }
                       `}
                       >
-                        <img
+                        <Image
                           src={language.flag}
                           alt={language.name}
+                          width={24}
+                          height={24}
                           className="w-6 h-6 rounded-full"
                         />
 
@@ -321,9 +325,11 @@ const Header: React.FC = () => {
                 aria-label="Change language"
                 className="flex items-center rounded-full  hover:bg-white/10 transition"
               >
-                <img
+                <Image
                   src={currentLanguage.flag}
                   alt={currentLanguage.name}
+                  width={28}
+                  height={24}
                   className="w-7 h-6 rounded-full"
                 />
               </button>
@@ -357,9 +363,11 @@ const Header: React.FC = () => {
                       }
                       `}
                     >
-                      <img
+                      <Image
                         src={language.flag}
                         alt={language.name}
+                        width={24}
+                        height={24}
                         className="w-6 h-6 rounded-full"
                       />
 

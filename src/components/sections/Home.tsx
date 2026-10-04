@@ -31,7 +31,11 @@ const Home = ({ ready = true, onHeroLoaded }: HomeProps) => {
   return (
     <div className=" mx-auto md:h-screen  flex items-center  dark:text-white text-[#271C35] md:pt-17">
       <div className="flex items-center md:flex-row flex-col-reverse md:mt-1 ">
-        <div className="md:w-3/12 md:grow-0 w-full ">
+        <div
+          className={`md:w-3/12 md:grow-0 w-full ${
+            locale === "fa" ? "md:pr-12" : ""
+          }`}
+        >
           {locale === "fa" ? (
             <motion.h1
               className="font-black lg:text-9xl text-8xl  flex flex-col lg:-mt-5 mt-12"

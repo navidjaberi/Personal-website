@@ -20,7 +20,7 @@ const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
         whileTap={{ scale: 0.98 }}
       >
         <div className="w-1/4 ">
-          <p className="uppercase md:text-xs text-xs  text-black dark:text-gray-100 opacity-50 mt-1">
+          <p className="uppercase md:text-xs text-xs  text-black dark:text-white opacity-50 mt-1">
             {date}
           </p>
         </div>

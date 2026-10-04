@@ -14,18 +14,18 @@ const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
   return (
     <Link href={link}>
       <motion.div
-        className="w-full dark:text-white text-black flex dark:hover:bg-darkPrimary hover:bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30  bg-[#DDD0C8] dark:bg-black"
+        className="w-full dark:text-white text-black flex flex-col md:flex-row dark:hover:bg-darkPrimary hover:bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30  bg-[#DDD0C8] dark:bg-black"
         {...fadeUp}
         whileHover={{ scale: 1.02, transition: { duration: 0.25, ease } }}
         whileTap={{ scale: 0.98 }}
       >
-        <div className="w-1/4 ">
+        <div className="md:w-1/4 mb-2 md:mb-0">
           <p className="uppercase md:text-xs text-xs  text-black dark:text-white opacity-50 mt-1">
             {date}
           </p>
         </div>
         <div
-          className={`w-3/4 ${locale === "fa" ? "text-right" : "text-left"}`}
+          className={`md:w-3/4 ${locale === "fa" ? "text-right" : "text-left"}`}
         >
           <h3 className="md:text-xl text-base ">{title}</h3>
           <p className="md:text-base text-sm mt-3 leading-7">{description}</p>

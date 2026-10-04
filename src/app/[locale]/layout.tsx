@@ -59,7 +59,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body
-        className="App overflow-x-hidden bg-[#DDD0C8]  transition-colors"
+        className="App overflow-x-hidden bg-[#DDD0C8] dark:bg-[#0c0a09] transition-colors"
       >
         <NextIntlClientProvider messages={messages}>
           <Providers>

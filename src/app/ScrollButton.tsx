@@ -15,7 +15,7 @@ export default function ScrollButton() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollBtn(window.scrollY > 100);
+      setShowScrollBtn(window.scrollY > 600);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -25,7 +25,7 @@ export default function ScrollButton() {
     <button
       className={`${
         showScrollBtn ? "opacity-100" : "opacity-0 pointer-events-none"
-      } sticky top-[40rem] md:top-[43rem] float-right mr-10 bg-lightSecondary dark:bg-darkPrimary dark:border-darkSecondary z-50 rounded-full border border-lightPrimary contact-animation transition-opacity ease-in-out delay-150`}
+      } fixed bottom-6 end-4 md:bottom-10 md:end-10 p-2 bg-lightSecondary text-lightPrimary dark:text-white dark:bg-darkPrimary dark:border-darkSecondary z-50 rounded-full border border-lightPrimary contact-animation transition-opacity ease-in-out delay-150`}
       onClick={scrollTop}
       aria-label="Scroll to top"
       tabIndex={showScrollBtn ? 0 : -1}

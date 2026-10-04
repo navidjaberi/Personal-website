@@ -10,7 +10,7 @@ const Skills = () => {
 
   return (
     <motion.div
-      className=" mx-auto h-dvh md:h-auto dark:text-white text-lightPrimary pt-5 items-center"
+      className=" mx-auto dark:text-white text-lightPrimary pt-5 items-center"
       {...fadeUp}
     >
       <div className="flex items-center justify-center md:pt-14 md:mt-8 mt-10 ">

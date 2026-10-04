@@ -10,10 +10,10 @@ const About = () => {
 
   return (
     <motion.div
-      className=" mx-auto  h-dvh dark:text-white text-lightPrimary md:h-auto "
+      className=" mx-auto dark:text-white text-lightPrimary "
       {...fadeUp}
     >
-      <div className="flex items-center justify-center md:pt-28 pt-16">
+      <div className="flex items-center justify-center md:pt-16 pt-16">
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
         <h2
           className="md:text-4xl  text-2xl px-4 py-2 "

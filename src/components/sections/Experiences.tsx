@@ -11,9 +11,9 @@ const Experiences = () => {
   const t = useTranslations("nav");
   const experiences = getExperiences(locale);
   return (
-    <div className=" mx-auto dark:text-white text-lightPrimary pt-5 md:mt-40 ">
+    <div className=" mx-auto dark:text-white text-lightPrimary pt-5 ">
       <motion.div
-        className="flex items-center justify-center md:mt-20 mt-10"
+        className="flex items-center justify-center md:mt-16 mt-10"
         {...fadeUp}
       >
         <div className="w-1/5 h-0.5  bg-lightPrimary dark:bg-white"></div>

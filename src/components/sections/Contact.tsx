@@ -20,7 +20,7 @@ const Contact = () => {
   }, []);
   return (
     <motion.div
-      className=" mx-auto dark:text-white text-lightPrimary h-dvh mb-10"
+      className=" mx-auto dark:text-white text-lightPrimary pb-24 pt-10"
       {...fadeUp}
     >
       <div className="flex items-center justify-center md:pt-14">
@@ -33,7 +33,7 @@ const Contact = () => {
         </h2>
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
       </div>
-      <div className="md:w-3/6 md:px-0 px-4 mx-auto text-lg leading-6 md:text-xs mt-32">
+      <div className="md:w-3/6 md:px-0 px-4 mx-auto text-lg leading-6 md:text-xs mt-16">
         <div
           className="w-full   dark:text-white text-black  dark:bg-darkPrimary bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30 md:hover:scale-[1.02]  ease-out duration-300 "
           dir={locale === "fa" ? "rtl" : "ltr"}

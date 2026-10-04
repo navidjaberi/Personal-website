@@ -11,7 +11,7 @@ const ContactCard: React.FC<ContactCardProps> = ({
 }) => {
   return (
     <div className="w-full text-white items-center justify-center rounded-xl p-2 md:mt-10   ease-in-out duration-500 mx-auto">
-      <Link href={link} target="_blank" aria-label={label}>
+      <Link href={link} target="_blank" title={label}>
         <motion.svg
           viewBox={viewBox}
           fill="currentColor"
@@ -22,6 +22,9 @@ const ContactCard: React.FC<ContactCardProps> = ({
         >
           <path d={pathD} />
         </motion.svg>
+        <span className="block mt-2 text-xs capitalize text-lightPrimary dark:text-white dark:opacity-50">
+          {label}
+        </span>
       </Link>
     </div>
   );

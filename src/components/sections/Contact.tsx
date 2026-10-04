@@ -10,6 +10,7 @@ import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
+import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 const Contact = () => {
   const locale = useLocale();
   const t = useTranslations("contact");
@@ -57,6 +58,7 @@ const Contact = () => {
               download
               {...hoverTap}
             >
+              <ArrowDownTrayIcon className="w-4 h-4 me-2 shrink-0" />
               {t("cv1")}
             </motion.a>
           </div>
@@ -67,6 +69,7 @@ const Contact = () => {
               download
               {...hoverTap}
             >
+              <ArrowDownTrayIcon className="w-4 h-4 me-2 shrink-0" />
               {t("cv2")}
             </motion.a>
           </div>

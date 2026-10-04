@@ -66,7 +66,7 @@ const ParticlesBg = ({ onReady }: ParticlesBgProps) => {
           color: "#000000",
           distance: 150,
           enable: true,
-          opacity: 0.3,
+          opacity: 0.15,
           width: 1,
         },
         move: {
@@ -102,6 +102,21 @@ const ParticlesBg = ({ onReady }: ParticlesBgProps) => {
         },
       },
       detectRetina: true,
+      motion: {
+        disable: true,
+      },
+      responsive: [
+        {
+          maxWidth: 768,
+          options: {
+            particles: {
+              number: {
+                value: 40,
+              },
+            },
+          },
+        },
+      ],
     }),
     []
   );
@@ -142,7 +157,7 @@ const ParticlesBg = ({ onReady }: ParticlesBgProps) => {
           color: "#ffffff",
           distance: 150,
           enable: true,
-          opacity: 0.2,
+          opacity: 0.12,
           width: 1,
         },
         move: {
@@ -178,6 +193,21 @@ const ParticlesBg = ({ onReady }: ParticlesBgProps) => {
         },
       },
       detectRetina: true,
+      motion: {
+        disable: true,
+      },
+      responsive: [
+        {
+          maxWidth: 768,
+          options: {
+            particles: {
+              number: {
+                value: 40,
+              },
+            },
+          },
+        },
+      ],
     }),
     []
   );

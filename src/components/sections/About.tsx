@@ -25,7 +25,7 @@ const About = () => {
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>
       </div>
       <div
-        className="md:w-3/6 mx-auto md:px-0 px-3 md:text-lg text-xs leading-6 md:leading-8 md:mt-10 text-black dark:text-white mt-10"
+        className="md:w-3/6 mx-auto md:px-0 px-3 md:text-lg text-sm leading-7 md:leading-8 md:mt-10 text-black dark:text-white mt-10"
         dir={locale === "fa" ? "rtl" : "ltr"}
       >
         <p className="whitespace-pre-line text-start">{t("description")}</p>

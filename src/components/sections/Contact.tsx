@@ -46,7 +46,7 @@ const Contact = () => {
               sizes="128px"
             />
           </div>
-          <div className="mt-8 md:text-xl text-xs">
+          <div className="mt-8 md:text-xl text-sm">
             <p> {t("thanks")}</p>
             <p className="mt-3">{t("description")}</p>
           </div>

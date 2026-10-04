@@ -27,8 +27,8 @@ const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
         <div
           className={`w-3/4 ${locale === "fa" ? "text-right" : "text-left"}`}
         >
-          <h3 className="md:text-xl text-xs ">{title}</h3>
-          <p className="md:text-base text-xs mt-3 leading-7">{description}</p>
+          <h3 className="md:text-xl text-base ">{title}</h3>
+          <p className="md:text-base text-sm mt-3 leading-7">{description}</p>
           {skills.map((i) => (
             <span
               key={i}

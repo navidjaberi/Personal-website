@@ -122,6 +122,7 @@ const Home = ({ ready = true, onHeroLoaded }: HomeProps) => {
           >
             <Image
               priority
+              placeholder="blur"
               src={landingImgLight}
               sizes="(min-width: 768px) 75vw, 100vw"
               alt="landing"

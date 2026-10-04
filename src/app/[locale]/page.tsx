@@ -22,6 +22,11 @@ function App() {
 
   const appReady = heroReady;
 
+  useEffect(() => {
+    const timer = setTimeout(() => setHeroReady(true), 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
   // -------------------- SCROLL PROGRESS BAR --------------------
   useEffect(() => {
     const onScroll = () => {

@@ -24,5 +24,9 @@
     "description": "If you'd like to contact, feel free to reach me by social media or Email",
     "cv1": "Download CV (ATS-Friendly / Corporate)",
     "cv2": "Download CV (Visual Edition / With Photo)"
+  },
+  "experiences": {
+    "more": "Show more",
+    "less": "Show less"
   }
 }

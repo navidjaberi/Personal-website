@@ -24,5 +24,9 @@
     "description": "Benimle iletişime geçmek isterseniz, sosyal medya veya e-posta üzerinden ulaşabilirsiniz",
     "cv1": "CV'yi İndir (Kurumsal / ATS Uyumlu)",
     "cv2": "CV'yi İndir (Görsel Versiyon / Fotoğraflı)"
+  },
+  "experiences": {
+    "more": "Daha fazla",
+    "less": "Daha az"
   }
 }

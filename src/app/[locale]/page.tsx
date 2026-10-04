@@ -95,7 +95,7 @@ function App() {
         <div className="fixed top-0 left-0 w-full h-[3px] z-[9999] bg-transparent">
           <div
             id="scroll-progress"
-            className="h-full bg-blue-500 w-0 transition-[width] duration-100"
+            className="h-full bg-[#3b82f6] w-0 transition-[width] duration-100"
           />
         </div>
 

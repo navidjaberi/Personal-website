@@ -242,7 +242,7 @@ const Header: React.FC<{ ready?: boolean }> = ({ ready = true }) => {
           <motion.li>
             {navItems.map((item) => (
               <Link
-                className="block p-4 text-xs font-semibold text-gray-400 focus:bg-white hover:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary rounded"
+                className="block p-4 text-xs font-semibold text-[#9ca3af] focus:bg-white hover:bg-white dark:focus:bg-darkSecondary dark:hover:bg-darkSecondary rounded"
                 to={item}
                 key={item}
                 smooth={true}

@@ -103,7 +103,7 @@ const Home = ({ ready = true, onHeroLoaded }: HomeProps) => {
               }
               whileHover={hoverTap.whileHover}
               whileTap={hoverTap.whileTap}
-              className="hidden md:block border text-xs md:text-lg px-4 py-1 mt-5 mx-auto rounded-3xl  items-center bg-lightSecondary border-lightPrimary dark:bg-transparent dark:text-darkSecondary dark:border-darkSecondary "
+              className="block border text-sm md:text-lg px-4 py-1 mt-5 mx-auto rounded-3xl  items-center bg-lightSecondary border-lightPrimary dark:bg-transparent dark:text-darkSecondary dark:border-darkSecondary "
               onClick={readMoreHandler}
             >
               {t("readMore")}{" "}

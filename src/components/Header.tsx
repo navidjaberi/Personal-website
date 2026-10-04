@@ -2,6 +2,7 @@
 import { useTheme } from "next-themes";
 import React, { useRef, useState } from "react";
 import { useAnimate, stagger, motion } from "framer-motion";
+import { ease } from "@/src/components/motion";
 import { useCallback, useEffect } from "react";
 import { Link } from "react-scroll";
 import { MoonIcon, SunIcon, Bars3Icon } from "@heroicons/react/24/outline";
@@ -10,7 +11,7 @@ import { useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import Image from "next/image";
-const Header: React.FC = () => {
+const Header: React.FC<{ ready?: boolean }> = ({ ready = true }) => {
   const languages = [
     {
       code: "en",
@@ -85,18 +86,18 @@ const Header: React.FC = () => {
       {
         duration: 0.2,
         delay: menuActive ? stagger(0.1, { startDelay: 0.15 }) : 0,
-      }
+      },
     );
   }, [menuActive, animate]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       const insideMobile = mobileDropdownRef.current?.contains(
-        event.target as Node
+        event.target as Node,
       );
 
       const insideDesktop = desktopDropdownRef.current?.contains(
-        event.target as Node
+        event.target as Node,
       );
 
       if (!insideMobile && !insideDesktop) {
@@ -259,31 +260,18 @@ const Header: React.FC = () => {
         className={`${
           headerStickTop ? "translate-y-0" : "translate-y-10 "
         }, hidden md:block transition-transform duration-300 rounded-3xl  dark:bg-darkPrimary bg-lightPrimary p-3  lg:w-7/12 md:w-8/12  fixed right-2/4 translate-x-1/2 z-50 uppercase`}
+        style={{ width: 700 }}
+        initial={{ opacity: 0 }}
         animate={{
-          opacity: [0, 1],
-          width: [0, 700],
+          opacity: ready ? 1 : 0,
           borderRadius: headerStickTop ? "0 0 20px 20px" : "40px",
         }}
         transition={{
-          width: {
-            duration: 4,
-            ease: "easeInOut",
-            times: [0, 0.2, 0.5, 0.8, 1],
-          },
-          opacity: {
-            duration: 3,
-          },
-          borderRadius: {
-            duration: 0.1,
-          },
+          opacity: { duration: 0.8, delay: 0.2, ease },
+          borderRadius: { duration: 0.3, ease },
         }}
       >
-        <motion.div
-          className="items-center text-center justify-center  md:flex"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.6, duration: 3, ease: "easeIn" }}
-        >
+        <div className="items-center text-center justify-center  md:flex">
           <div className="flex items-center ml-3">
             <button onClick={darkModeToggle} aria-label="Toggle theme">
               {mounted &&
@@ -378,7 +366,7 @@ const Header: React.FC = () => {
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
       </motion.nav>
     </>
   );

@@ -3,15 +3,17 @@ import classes from "@/styles/home.module.css";
 import landingImgLight from "@/public/img/landing.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ease, hoverTap } from "@/src/components/motion";
 import { useTheme } from "next-themes";
-import { animateScroll, scroller } from "react-scroll";
+import { scroller } from "react-scroll";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 type HomeProps = {
+  ready?: boolean;
   onHeroLoaded?: () => void;
 };
-const Home = ({ onHeroLoaded }: HomeProps) => {
+const Home = ({ ready = true, onHeroLoaded }: HomeProps) => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
   const t = useTranslations("hero");
@@ -24,11 +26,6 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
     });
   };
   useEffect(() => {
-    animateScroll.scrollTo(50, {
-      duration: 100,
-    });
-  }, []);
-  useEffect(() => {
     setMounted(true);
   }, []);
   return (
@@ -39,8 +36,9 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
             <motion.h1
               className="font-black lg:text-9xl text-8xl  flex flex-col lg:-mt-5 mt-12"
               style={{ fontFamily: "serif" }}
-              animate={{ opacity: [0, 1] }}
-              transition={{ duration: 2 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: ready ? 1 : 0 }}
+              transition={{ duration: 0.8, ease }}
             >
               {" "}
               <motion.span className="md:text-right md:-ml-60 md:-mt-28  md:text-8xl text-6xl">
@@ -54,26 +52,27 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
             <motion.h1
               className="font-black lg:text-9xl text-8xl  flex flex-col lg:-mt-5 mt-12"
               style={{ fontFamily: "serif" }}
-              animate={{ opacity: [0, 1] }}
-              transition={{ duration: 2 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: ready ? 1 : 0 }}
+              transition={{ duration: 0.8, ease }}
             >
               <motion.span className="md:text-left md:ml-7 -ml-60 md:-mt-12 ">
                 NA
               </motion.span>
               <motion.span
                 className={classes.text_second_piece}
-                animate={{ x: 0 }}
-                initial={{ x: -200 }}
-                transition={{ duration: 3 }}
+                initial={{ x: -60 }}
+                animate={{ x: ready ? 0 : -60 }}
+                transition={{ duration: 1.2, delay: 0.1, ease }}
               >
                 VID
               </motion.span>
               <motion.span className={classes.text_third_piece}>JA</motion.span>
               <motion.span
                 className={classes.text_forth_piece}
-                animate={{ x: 0 }}
-                initial={{ x: -200 }}
-                transition={{ duration: 3 }}
+                initial={{ x: -60 }}
+                animate={{ x: ready ? 0 : -60 }}
+                transition={{ duration: 1.2, delay: 0.2, ease }}
               >
                 BERI
               </motion.span>
@@ -85,23 +84,25 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
           >
             <motion.p
               className="lg:text-lg md:text-md text-sm px-2  text-black dark:text-white"
-              animate={{ x: 0 }}
-              initial={{ x: -500 }}
-              transition={{ delay: 1, duration: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.3, ease }}
             >
               {t("description")}
             </motion.p>
             <motion.button
-              animate={{
-                x: 0,
-                transition: {
-                  delay: 1,
-                  duration: 1,
-                },
-              }}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.8 }}
-              initial={{ x: -500 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={
+                ready
+                  ? {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.8, delay: 0.4, ease },
+                    }
+                  : { opacity: 0, y: 20 }
+              }
+              whileHover={hoverTap.whileHover}
+              whileTap={hoverTap.whileTap}
               className="hidden md:block border text-xs md:text-lg px-4 py-1 mt-5 mx-auto rounded-3xl  items-center bg-lightSecondary border-lightPrimary dark:bg-transparent dark:text-darkSecondary dark:border-darkSecondary "
               onClick={readMoreHandler}
             >
@@ -113,10 +114,11 @@ const Home = ({ onHeroLoaded }: HomeProps) => {
         <div className="md:w-9/12 w-full  md:mt-0 md:flex-1 ">
           <motion.div
             className="md:px-12 px-3"
-            initial={{ opacity: 0.1 }}
-            transition={{ duration: 1 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={
+              ready ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.98 }
+            }
+            transition={{ duration: 1, ease }}
           >
             <Image
               priority

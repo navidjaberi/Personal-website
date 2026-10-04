@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { fadeUp } from "@/src/components/motion";
 import ExperiencesCard from "@/src/components/base/experience/ExperienceCard";
 import { getExperiences } from "../base/experience/experienceHelper";
 import { useLocale } from "next-intl";
@@ -10,14 +11,11 @@ const Experiences = () => {
   const t = useTranslations("nav");
   const experiences = getExperiences(locale);
   return (
-    <motion.div
-      className=" mx-auto dark:text-white text-lightPrimary pt-5 md:mt-40 "
-      initial={{ opacity: 0, y: 200 }}
-      transition={{ duration: 1 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-    >
-      <div className="flex items-center justify-center md:mt-20 mt-10">
+    <div className=" mx-auto dark:text-white text-lightPrimary pt-5 md:mt-40 ">
+      <motion.div
+        className="flex items-center justify-center md:mt-20 mt-10"
+        {...fadeUp}
+      >
         <div className="w-1/5 h-0.5  bg-lightPrimary dark:bg-white"></div>
         <h2
           className="md:text-4xl  text-2xl px-4 py-2 "
@@ -26,7 +24,7 @@ const Experiences = () => {
           {t("experiences")}
         </h2>
         <div className="w-1/5 h-0.5  bg-lightPrimary dark:bg-white"></div>
-      </div>
+      </motion.div>
       <div
         className="md:w-3/6 md:px-0 px-4 mx-auto text-lg leading-6 md:text-xs "
         dir={locale === "fa" ? "rtl" : "ltr"}
@@ -42,7 +40,7 @@ const Experiences = () => {
           />
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 export default Experiences;

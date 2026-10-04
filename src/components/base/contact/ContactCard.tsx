@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ease } from "@/src/components/motion";
 import Link from "next/link";
 import ContactCardProps from "../../types/ContactCard";
 const ContactCard: React.FC<ContactCardProps> = ({
@@ -15,14 +16,9 @@ const ContactCard: React.FC<ContactCardProps> = ({
           viewBox={viewBox}
           fill="currentColor"
           className={`mx-auto dark:opacity-50 dark:hover:opacity-100 cursor-pointer ${color} w-11 h-11 md:w-20 md:h-20 focus:outline-none`}
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{
-            type: "spring",
-            stiffness: 400,
-            damping: 60,
-            duration: 2,
-          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.25, ease }}
         >
           <path d={pathD} />
         </motion.svg>

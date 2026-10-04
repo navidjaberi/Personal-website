@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { fadeUp } from "@/src/components/motion";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 
@@ -10,10 +11,7 @@ const About = () => {
   return (
     <motion.div
       className=" mx-auto  h-dvh dark:text-white text-lightPrimary md:h-auto "
-      initial={{ opacity: 0, y: 200 }}
-      transition={{ duration: 1 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      {...fadeUp}
     >
       <div className="flex items-center justify-center md:pt-28 pt-16">
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>

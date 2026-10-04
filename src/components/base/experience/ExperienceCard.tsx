@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ease, fadeUp } from "@/src/components/motion";
 import Link from "next/link";
 import ExperiencesCardProps from "../../types/ExperiencesCard";
 import { useLocale } from "next-intl";
@@ -14,12 +15,9 @@ const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
     <Link href={link}>
       <motion.div
         className="w-full dark:text-white text-black flex dark:hover:bg-darkPrimary hover:bg-lightSecondary hover:shadow-xl rounded-xl p-4 mt-10 border border-darkPrimary/30 dark:border-darkSecondary/30  bg-[#DDD0C8] dark:bg-black"
-        initial={{ opacity: 0, y: 100 }}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.7 }}
-        transition={{ type: "spring", stiffness: 400, damping: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        {...fadeUp}
+        whileHover={{ scale: 1.02, transition: { duration: 0.25, ease } }}
+        whileTap={{ scale: 0.98 }}
       >
         <div className="w-1/4 ">
           <p className="uppercase md:text-xs text-xs  text-black dark:text-gray-100 opacity-50 mt-1">

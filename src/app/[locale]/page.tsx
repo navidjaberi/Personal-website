@@ -100,12 +100,12 @@ function App() {
         </div>
 
         {/* ---------------- APP ---------------- */}
-        <Header />
+        <Header ready={appReady} />
 
         <Particles />
 
         <section id="home">
-          <Home onHeroLoaded={() => setHeroReady(true)} />
+          <Home ready={appReady} onHeroLoaded={() => setHeroReady(true)} />
         </section>
 
         <section id="about">

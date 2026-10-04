@@ -2,6 +2,7 @@
 import SkillsCard from "@/src/components/base/skills/SkillsCard";
 import { skills } from "@/src/components/base/skills/SkillsContent";
 import { motion } from "framer-motion";
+import { fadeUp } from "@/src/components/motion";
 import { useTranslations } from "next-intl";
 
 const Skills = () => {
@@ -10,10 +11,7 @@ const Skills = () => {
   return (
     <motion.div
       className=" mx-auto h-dvh md:h-auto dark:text-white text-lightPrimary pt-5 items-center"
-      initial={{ opacity: 0, y: 200 }}
-      transition={{ duration: 1 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      {...fadeUp}
     >
       <div className="flex items-center justify-center md:pt-14 md:mt-8 mt-10 ">
         <div className="w-1/5 h-0.5 bg-lightPrimary dark:bg-white"></div>

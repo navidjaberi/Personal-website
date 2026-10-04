@@ -66,14 +66,14 @@ function App() {
         }`}
       >
         {/* ---------------- CURSOR ---------------- */}
-        <div className="hidden md:block">
+        <div className="hidden md:block md:motion-reduce:hidden">
           <AnimatedCursor
-            innerSize={8}
+            innerSize={0}
             outerSize={35}
             innerScale={1}
             outerScale={2}
             outerAlpha={0}
-            showSystemCursor={false}
+            showSystemCursor={true}
             innerStyle={{
               backgroundColor: "var(--cursor-color)",
             }}

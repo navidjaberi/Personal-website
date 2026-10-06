@@ -7,8 +7,9 @@ import { useState } from "react";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
   date,
+  type,
   title,
-  description,
+  points,
   skills,
   link,
 }) => {
@@ -25,29 +26,36 @@ const ExperiencesCard: React.FC<ExperiencesCardProps> = ({
         <p className="uppercase md:text-xs text-xs  text-black dark:text-white opacity-50 mt-1">
           {date}
         </p>
+        <p className="md:text-xs text-xs text-black dark:text-white opacity-50 mt-1">
+          {type}
+        </p>
       </div>
       <div className={`md:w-3/4 ${locale === "fa" ? "text-right" : "text-left"}`}>
-        <Link
-          href={link}
-          target="_blank"
-          className="inline-flex items-center gap-1 hover:text-lightPrimary dark:hover:text-darkSecondary"
-        >
+        {link ? (
+          <Link
+            href={link}
+            target="_blank"
+            className="inline-flex items-center gap-1 hover:text-lightPrimary dark:hover:text-darkSecondary"
+          >
+            <h3 className="md:text-xl text-base ">{title}</h3>
+            <ArrowUpRightIcon className="w-4 h-4 shrink-0" />
+          </Link>
+        ) : (
           <h3 className="md:text-xl text-base ">{title}</h3>
-          <ArrowUpRightIcon className="w-4 h-4 shrink-0" />
-        </Link>
-        <p
-          className={`md:text-base text-sm mt-3 leading-7 ${
-            expanded ? "" : "line-clamp-3"
-          }`}
-        >
-          {description}
-        </p>
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="text-xs md:text-sm mt-2 text-lightPrimary dark:text-darkSecondary hover:underline"
-        >
-          {expanded ? t("less") : t("more")}
-        </button>
+        )}
+        <ul className="md:text-base text-sm mt-3 leading-7 list-disc ps-5 space-y-1">
+          {(expanded ? points : points.slice(0, 2)).map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+        {points.length > 2 && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="text-xs md:text-sm mt-2 text-lightPrimary dark:text-darkSecondary hover:underline"
+          >
+            {expanded ? t("less") : t("more")}
+          </button>
+        )}
         <div>
           {skills.map((i) => (
             <span

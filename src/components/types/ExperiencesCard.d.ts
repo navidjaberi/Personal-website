@@ -1,7 +1,8 @@
 export default interface ExperiencesCardProps {
   date: string;
+  type: string;
   title: string;
-  description: string;
+  points: string[];
   skills: string[];
-  link:string;
+  link: string;
 }

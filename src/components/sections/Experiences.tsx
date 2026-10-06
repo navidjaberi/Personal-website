@@ -33,8 +33,9 @@ const Experiences = () => {
           <ExperiencesCard
             key={i.id}
             date={i.date}
+            type={i.type}
             title={i.title}
-            description={i.description}
+            points={i.points}
             skills={i.skills}
             link={i.link}
           />

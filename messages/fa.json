@@ -37,5 +37,16 @@
     "demo": "دمو",
     "github": "گیت‌هاب",
     "npm": "npm"
+  },
+  "skills": {
+    "frontend": "فرانت‌اند",
+    "alsoWorkedWith": "تجربه‌ی کار با",
+    "ui": "رابط کاربری و استایل",
+    "architecture": "معماری",
+    "quality": "کیفیت وب",
+    "testing": "تست",
+    "data": "داده و API",
+    "tooling": "ابزارها",
+    "ai": "توسعه با کمک هوش مصنوعی"
   }
 }

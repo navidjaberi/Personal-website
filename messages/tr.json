@@ -37,5 +37,16 @@
     "demo": "Canlı demo",
     "github": "GitHub",
     "npm": "npm"
+  },
+  "skills": {
+    "frontend": "Frontend",
+    "alsoWorkedWith": "Ayrıca çalıştığım",
+    "ui": "Arayüz ve Stil",
+    "architecture": "Mimari",
+    "quality": "Web Kalitesi",
+    "testing": "Test",
+    "data": "Veri ve API",
+    "tooling": "Araçlar",
+    "ai": "Yapay Zekâ Destekli Geliştirme"
   }
 }

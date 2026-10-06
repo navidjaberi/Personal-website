@@ -1,12 +1,14 @@
 "use client";
 import SkillsCard from "@/src/components/base/skills/SkillsCard";
-import { skills } from "@/src/components/base/skills/SkillsContent";
+import { skills, skillGroups } from "@/src/components/base/skills/SkillsContent";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/src/components/motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const Skills = () => {
   const t = useTranslations("nav");
+  const tSkills = useTranslations("skills");
+  const locale = useLocale();
 
   return (
     <motion.div
@@ -32,6 +34,19 @@ const Skills = () => {
             title={i.name}
             viewBox={i.viewBox}
           />
+        ))}
+      </div>
+      <div
+        className="md:w-3/5 md:px-0 px-4 mx-auto mt-10 text-start text-black dark:text-white md:text-base text-sm leading-7"
+        dir={locale === "fa" ? "rtl" : "ltr"}
+      >
+        {skillGroups.map((group) => (
+          <p key={group.id} className="mt-2">
+            <span className="font-semibold text-lightPrimary dark:text-darkSecondary">
+              {tSkills(group.id)}:
+            </span>{" "}
+            <bdi>{group.items}</bdi>
+          </p>
         ))}
       </div>
     </motion.div>

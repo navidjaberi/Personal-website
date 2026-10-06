@@ -37,5 +37,16 @@
     "demo": "Live demo",
     "github": "GitHub",
     "npm": "npm"
+  },
+  "skills": {
+    "frontend": "Frontend",
+    "alsoWorkedWith": "Also worked with",
+    "ui": "UI & Styling",
+    "architecture": "Architecture",
+    "quality": "Web Quality",
+    "testing": "Testing",
+    "data": "Data & APIs",
+    "tooling": "Tooling",
+    "ai": "AI-Assisted Development"
   }
 }

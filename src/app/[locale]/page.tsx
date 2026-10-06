@@ -2,6 +2,7 @@
 import Home from "@/src/components/sections/Home";
 import About from "@/src/components/sections/About";
 import Experiences from "@/src/components/sections/Experiences";
+import Projects from "@/src/components/sections/Projects";
 import Skills from "@/src/components/sections/Skills";
 import Contact from "@/src/components/sections/Contact";
 import Header from "@/src/components/Header";
@@ -17,7 +18,7 @@ const Particles = dynamic(() => import("@/src/components/particlesbg"), {
 });
 // -------------------- MAIN APP --------------------
 function App() {
-  const sections = ["home", "about", "experiences", "skills", "contact"];
+  const sections = ["home", "about", "experiences", "projects", "skills", "contact"];
   const [heroReady, setHeroReady] = useState(false);
 
   const appReady = heroReady;
@@ -119,6 +120,10 @@ function App() {
 
         <section id="experiences">
           <Experiences />
+        </section>
+
+        <section id="projects">
+          <Projects />
         </section>
 
         <section id="skills">

@@ -29,7 +29,7 @@ const Header: React.FC<{ ready?: boolean }> = ({ ready = true }) => {
       flag: "/flags/tr.svg",
     },
   ];
-  const navItems = ["home", "about", "experiences", "skills", "contact"];
+  const navItems = ["home", "about", "experiences", "projects", "skills", "contact"];
   const [open, setOpen] = useState(false);
   const mobileDropdownRef = useRef<HTMLDivElement | null>(null);
   const desktopDropdownRef = useRef<HTMLDivElement | null>(null);
@@ -283,7 +283,7 @@ const Header: React.FC<{ ready?: boolean }> = ({ ready = true }) => {
             </button>
           </div>
           <div className="w-full  flex justify-center  items-center ">
-            <div className="text-xs  flex justify-center  items-center gap-11">
+            <div className="text-xs  flex justify-center  items-center gap-8">
               {navItems.map((item) => (
                 <React.Fragment key={item}>
                   <Link

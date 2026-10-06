@@ -87,6 +87,22 @@ const Home = ({ ready = true, onHeroLoaded }: HomeProps) => {
             dir={locale === "fa" ? "rtl" : "ltr"}
           >
             <motion.p
+              className="lg:text-xl text-base font-semibold px-2 text-lightPrimary dark:text-darkSecondary"
+              initial={{ opacity: 0, y: 20 }}
+              animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.25, ease }}
+            >
+              {t("role")}
+            </motion.p>
+            <motion.p
+              className="text-xs md:text-sm px-2 mt-1 mb-4 opacity-70 text-black dark:text-white"
+              initial={{ opacity: 0, y: 20 }}
+              animate={ready ? { opacity: 0.7, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.3, ease }}
+            >
+              {t("location")}
+            </motion.p>
+            <motion.p
               className="lg:text-lg md:text-md text-sm px-2  text-black dark:text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}

@@ -1,22 +1,25 @@
 {
   "meta": {
-    "title": "Navid Jaberi | Frontend Developer",
-    "description": "Navid Jaberi, a frontend developer with 4+ years of experience in Vue, Nuxt, React and Next.js. Experience, skills, resume and contact."
+    "title": "Navid Jaberi | Frontend Engineer (Vue.js / Nuxt)",
+    "description": "Navid Jaberi, a frontend engineer with four years of Vue and Nuxt experience, open to remote work. Experience, open-source projects, skills and resume."
   },
   "nav": {
     "home": "Home",
     "about": "About",
     "experiences": "Experiences",
+    "projects": "Projects",
     "skills": "Skills",
     "contact": "Contact"
   },
   "hero": {
-    "description": "Hello my name is Navid,\na Frontend Developer who likes building solid, scalable products\nwith genuinely great user experiences.",
+    "role": "Frontend Engineer · Vue.js / Nuxt",
+    "location": "Tehran, Iran / Famagusta, Cyprus · Open to remote",
+    "description": "I build Vue and Nuxt products that are fast, accessible and tested, and I'm looking for a team where I can own a frontend.",
     "readMore": "Read More"
   },
   "about": {
     "title": "About Me",
-    "description": "Hey, I'm Navid 👋 I'm a frontend developer based in Iran, and for the last 4+ years I've basically lived inside Vue.js and Nuxt 3—building everything from multi-app SaaS platforms to PWAs and SEO-focused landing pages.\n\nWhat I really enjoy is taking something messy—three disconnected frontend apps, a backend that doesn't communicate well with the UI, or any complicated project—and turning it into something clean, fast, maintainable, and enjoyable to work on.\n\nI'm passionate about performance, clean architecture, and creating interfaces that not only work well but also feel intuitive. Before becoming a developer, I worked with Figma, Photoshop, and WordPress, which still influences how I approach UI and UX today.\n\nMy primary stack includes Vue, Nuxt, TypeScript, Pinia, and Tailwind CSS, while I also enjoy building projects with React and Next.js. Since JavaScript fundamentals transfer across ecosystems, I like staying comfortable with both.\n\nI'm completely self-taught—no computer science degree, just years of learning through real projects, documentation, and online courses. Outside of programming, I enjoy exploring new technologies, reading about frontend performance, and occasionally disconnecting from the screen to recharge."
+    "description": "Hey, I'm Navid 👋 a self-taught frontend engineer. I started with React in 2021, found my home in Vue, and have spent four years building Vue and Nuxt products, most recently full-time in a remote Scrum team at Dongi.\n\nLearning without a roadmap made me careful and curious: I test what I ship and pick up new tools early. You can see it in Vue Smart Loading Kit, my open-source Vue library checked with mutation testing, and in a daily AI workflow with Claude Code, Codex and Copilot, kept in check by tests and types.\n\nMy main stack is Vue 3, Nuxt, TypeScript, Pinia and Tailwind CSS, and I also build with React and Next.js; this site itself is built with Next.js. I care about the parts users feel but rarely see: accessibility, Core Web Vitals, technical SEO, and RTL and multilingual interfaces.\n\nI hold a bachelor's degree in psychology, which still shapes how I think about the people using what I build. I speak Persian (native), English (advanced) and Turkish (basic).\n\nI'm looking for a team where I can own a frontend and keep growing."
   },
   "contact": {
     "title": "Contact",
@@ -28,5 +31,11 @@
   "experiences": {
     "more": "Show more",
     "less": "Show less"
+  },
+  "projects": {
+    "title": "Projects",
+    "demo": "Live demo",
+    "github": "GitHub",
+    "npm": "npm"
   }
 }

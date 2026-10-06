@@ -1,22 +1,25 @@
 {
   "meta": {
-    "title": "Navid Jaberi | Frontend Geliştirici",
-    "description": "Vue, Nuxt, React ve Next.js ile 4 yılı aşkın deneyime sahip frontend geliştirici Navid Jaberi. Deneyim, yetenekler, özgeçmiş ve iletişim."
+    "title": "Navid Jaberi | Frontend Mühendisi (Vue.js / Nuxt)",
+    "description": "Vue ve Nuxt ile dört yıllık deneyime sahip, uzaktan çalışmaya açık frontend mühendisi Navid Jaberi. Deneyim, açık kaynak projeler, yetenekler ve özgeçmiş."
   },
   "nav": {
     "home": "Ana Sayfa",
     "about": "Hakkımda",
     "experiences": "Deneyimler",
+    "projects": "Projeler",
     "skills": "Yetenekler",
     "contact": "İletişim"
   },
   "hero": {
-    "description": "Merhaba, ben Navid.\nSağlam, ölçeklenebilir ürünler geliştirmeyi ve harika kullanıcı deneyimleri oluşturmayı seven bir Frontend Geliştiricisiyim.",
+    "role": "Frontend Mühendisi · Vue.js / Nuxt",
+    "location": "Tahran, İran / Gazimağusa, Kıbrıs · Uzaktan çalışmaya açık",
+    "description": "Hızlı, erişilebilir ve test edilmiş Vue ve Nuxt ürünleri geliştiriyorum; bir frontend'in sorumluluğunu üstlenebileceğim bir ekip arıyorum.",
     "readMore": "Daha Fazla"
   },
   "about": {
     "title": "Hakkımda",
-    "description": "Merhaba, ben Navid 👋 İran'da yaşayan bir Frontend Developer'ım. Son dört yıldan uzun süredir ağırlıklı olarak Vue.js ve Nuxt 3 ile çalışıyor; SaaS platformlarından PWA projelerine ve SEO odaklı landing page'lere kadar birçok farklı ürün geliştiriyorum.\n\nEn çok keyif aldığım şey, karmaşık ve dağınık projeleri temiz, hızlı, sürdürülebilir ve ölçeklenebilir yapılara dönüştürmek. Benim için sadece çalışan kod yazmak değil, aynı zamanda harika bir kullanıcı deneyimi sunan ürünler geliştirmek de önemli.\n\nYazılım geliştirmeye başlamadan önce Figma, Photoshop ve WordPress ile çalışıyordum. Bu tasarım geçmişi bugün hâlâ kullanıcı arayüzleri ve kullanıcı deneyimi hakkında düşünme biçimimi etkiliyor.\n\nAna teknoloji yığınım Vue, Nuxt, TypeScript, Pinia ve Tailwind CSS'den oluşuyor. Bunun yanında React ve Next.js ile de aktif olarak projeler geliştiriyor ve her iki ekosistemde de kendimi güncel tutmayı seviyorum.\n\nBilgisayar mühendisliği diplomam yok; tamamen kendi kendime, gerçek projeler, dokümantasyonlar ve çevrimiçi eğitimlerle öğrendim. Kod yazmadığım zamanlarda yeni teknolojileri keşfetmeyi, frontend performansı üzerine okumalar yapmayı ve biraz kafa dinlemek için dışarı çıkmayı seviyorum."
+    "description": "Merhaba, ben Navid 👋 kendi kendine öğrenmiş bir frontend mühendisiyim. 2021'de React ile başladım, kendimi Vue'da buldum ve dört yıldır Vue ve Nuxt ürünleri geliştiriyorum; en son Dongi'de uzaktan çalışan bir Scrum ekibinde tam zamanlı çalıştım.\n\nBir yol haritası olmadan öğrenmek beni dikkatli ve meraklı yaptı: teslim ettiğim şeyi test ediyorum ve yeni araçları erkenden öğreniyorum. Bunu, mutasyon testiyle doğrulanan açık kaynak Vue kütüphanem Vue Smart Loading Kit'te ve testler ile tiplerle kontrol altında tuttuğum Claude Code, Codex ve Copilot ile günlük yapay zekâ destekli çalışma düzenimde görebilirsiniz.\n\nAna teknoloji yığınım Vue 3, Nuxt, TypeScript, Pinia ve Tailwind CSS; React ve Next.js ile de geliştiriyorum, bu site de Next.js ile yapıldı. Kullanıcıların hissettiği ama nadiren gördüğü şeyleri önemsiyorum: erişilebilirlik, Core Web Vitals, teknik SEO ve RTL ile çok dilli arayüzler.\n\nPsikoloji lisans derecem var ve bu hâlâ geliştirdiğim ürünleri kullanan insanlara bakışımı şekillendiriyor. Farsça (ana dil), İngilizce (ileri) ve Türkçe (temel) konuşuyorum.\n\nBir frontend'in sorumluluğunu üstlenebileceğim ve gelişmeye devam edebileceğim bir ekip arıyorum."
   },
   "contact": {
     "title": "İletişim",
@@ -28,5 +31,11 @@
   "experiences": {
     "more": "Daha fazla",
     "less": "Daha az"
+  },
+  "projects": {
+    "title": "Projeler",
+    "demo": "Canlı demo",
+    "github": "GitHub",
+    "npm": "npm"
   }
 }

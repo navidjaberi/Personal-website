@@ -50,6 +50,13 @@ const Contact = () => {
           <div className="mt-8 md:text-xl text-sm">
             <p> {t("thanks")}</p>
             <p className="mt-3">{t("description")}</p>
+            <a
+              href="mailto:navidjaberi5@gmail.com"
+              className="inline-block mt-3 font-semibold text-lightPrimary dark:text-darkSecondary hover:underline"
+              dir="ltr"
+            >
+              navidjaberi5@gmail.com
+            </a>
           </div>
           <div className="mt-5">
             <motion.a

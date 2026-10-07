@@ -14,6 +14,11 @@ export async function generateMetadata({
   params: { locale: string };
 }) {
   const t = await getTranslations({ locale, namespace: "meta" });
+  const ogLocales: Record<string, string> = {
+    en: "en_US",
+    fa: "fa_IR",
+    tr: "tr_TR",
+  };
 
   return {
     metadataBase: new URL("https://personal-website-flax-six-86.vercel.app"),
@@ -29,6 +34,7 @@ export async function generateMetadata({
         fa: "/fa",
         en: "/en",
         tr: "/tr",
+        "x-default": "/en",
       },
     },
     openGraph: {
@@ -36,7 +42,10 @@ export async function generateMetadata({
       description: t("description"),
       url: `/${locale}`,
       siteName: "Navid Jaberi",
-      locale,
+      locale: ogLocales[locale] ?? "en_US",
+      alternateLocale: Object.entries(ogLocales)
+        .filter(([key]) => key !== locale)
+        .map(([, value]) => value),
       type: "website",
       images: ["/img/landing.jpg"],
     },
